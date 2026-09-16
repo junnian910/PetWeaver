@@ -498,7 +498,7 @@ function fill(c) {
     avatarVtsEnabled: false,
     avatarVtsHost: c.avatar?.vtubeStudio?.host || '127.0.0.1',
     avatarVtsPort: c.avatar?.vtubeStudio?.port ?? 8001,
-    avatarVtsPluginName: c.avatar?.vtubeStudio?.pluginName || 'fafa-desktop-pet',
+    avatarVtsPluginName: c.avatar?.vtubeStudio?.pluginName || 'PetWeaver',
     avatarVtsDeveloper: c.avatar?.vtubeStudio?.pluginDeveloper || 'Fafa',
     voiceEnabled:c.voice.enabled, voiceDeviceId:c.voice.deviceId, voicePushToTalkKey:c.voice.pushToTalkKey || 'F8',
     voiceThreshold:c.voice.threshold, voiceSensitivity:c.voice.sensitivity, voiceReactionCooldownMs:c.voice.reactionCooldownMs,
@@ -1145,7 +1145,7 @@ function collectConfigPatch() {
         enabled: false,
         host: form.elements.avatarVtsHost.value.trim() || '127.0.0.1',
         port: Math.max(1, Math.min(65535, Math.round(Number(form.elements.avatarVtsPort.value) || 8001))),
-        pluginName: form.elements.avatarVtsPluginName.value.trim() || 'fafa-desktop-pet',
+        pluginName: form.elements.avatarVtsPluginName.value.trim() || 'PetWeaver',
         pluginDeveloper: form.elements.avatarVtsDeveloper.value.trim() || 'Fafa',
         modelId: document.querySelector('#avatar-vts-model-select')?.value || config.avatar?.vtubeStudio?.modelId || ''
       }

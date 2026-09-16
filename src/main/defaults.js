@@ -81,7 +81,7 @@ export const defaults = {
   avatar: {
     mode: 'video',
     live2d: { models: [], activeModelId: '' },
-    vtubeStudio: { enabled: false, host: '127.0.0.1', port: 8001, pluginName: 'fafa-desktop-pet', pluginDeveloper: 'Fafa', modelId: '', expressionFile: '', hotkeyFile: '' }
+    vtubeStudio: { enabled: false, host: '127.0.0.1', port: 8001, pluginName: 'PetWeaver', pluginDeveloper: 'PetWeaver contributors', modelId: '', expressionFile: '', hotkeyFile: '' }
   },
   quietHours: { enabled: false, start: '23:00', end: '07:00' },
   dock: { enabled: true },

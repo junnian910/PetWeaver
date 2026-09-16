@@ -56,7 +56,7 @@ export class PetWindow {
       alwaysOnTop: config.alwaysOnTop,
       skipTaskbar: true,
       backgroundColor: '#00000000',
-      title: '发发桌宠',
+      title: 'PetWeaver — Fafa',
       webPreferences: { preload: this.preloadPath, contextIsolation: true, nodeIntegration: false, sandbox: true }
     })
     this.#window = win

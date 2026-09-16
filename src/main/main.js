@@ -25,7 +25,7 @@ protocol.registerSchemesAsPrivileged([{
   privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true }
 }])
 
-app.setAppUserModelId('com.fafa.desktop-pet')
+app.setAppUserModelId('com.petweaver.desktop')
 
 process.on('uncaughtException', (error) => {
   log('UNCAUGHT', error?.stack || String(error))

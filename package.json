@@ -1,7 +1,7 @@
 {
-  "name": "fafa-desktop-pet",
-  "version": "0.3.0",
-  "description": "发发 - 支持 B 站直播互动的 Windows 桌面宠物",
+  "name": "petweaver-desktop",
+  "version": "0.4.0-alpha.1",
+  "description": "An extensible Windows desktop-pet runtime with reusable character packages and live-stream interaction.",
   "type": "module",
   "main": "src/main/main.js",
   "author": "Fafa",
@@ -14,8 +14,8 @@
     "test:watch": "vitest",
     "build:web": "vite build",
     "build": "pnpm test && pnpm build:web && electron-builder --win nsis --x64",
-    "build:test": "pnpm test && pnpm run build:web && electron-builder --dir --win --x64 --config.directories.output=test-build-v030 --config.electronDist=node_modules/electron/dist",
-    "build:portable": "pnpm run build:web && electron-builder --dir --win --x64 --config.directories.output=portable-v0.3.0 --config.electronDist=node_modules/electron/dist",
+    "build:test": "pnpm test && pnpm run build:web && electron-builder --dir --win --x64 --config.directories.output=test-build-v040-alpha1 --config.electronDist=node_modules/electron/dist",
+    "build:portable": "pnpm run build:web && electron-builder --dir --win --x64 --config.directories.output=portable-v0.4.0-alpha.1 --config.electronDist=node_modules/electron/dist",
     "check": "node scripts/check-javascript.mjs",
     "validate:actions": "node scripts/validate-action-videos.mjs",
     "validate:actions:release": "node scripts/validate-action-videos.mjs --release"
@@ -39,8 +39,8 @@
     "wait-on": "^8.0.3"
   },
   "build": {
-    "appId": "com.fafa.desktop-pet",
-    "productName": "发发",
+    "appId": "com.petweaver.desktop",
+    "productName": "PetWeaver",
     "asar": true,
     "files": [
       "dist/**/*",
@@ -64,7 +64,7 @@
       "**/node_modules/node-global-key-listener/**/*"
     ],
     "directories": {
-      "output": "release-v0.3.0"
+      "output": "release-v0.4.0-alpha.1"
     },
     "win": {
       "icon": "public/assets/fafa-pet-final.png",

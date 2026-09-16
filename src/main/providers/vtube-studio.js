@@ -132,14 +132,14 @@ export class VTubeStudioClient {
     let authenticationToken = String(token || '')
     if (!authenticationToken) {
       const tokenResult = await this.request('AuthenticationTokenRequest', {
-        pluginName: String(this.config.pluginName || 'fafa-desktop-pet'),
+        pluginName: String(this.config.pluginName || 'PetWeaver'),
         pluginDeveloper: String(this.config.pluginDeveloper || 'Fafa')
       })
       authenticationToken = String(tokenResult.data.authenticationToken || '')
     }
     if (!authenticationToken) throw new Error('VTube Studio 未返回认证令牌')
     const authResult = await this.request('AuthenticationRequest', {
-      pluginName: String(this.config.pluginName || 'fafa-desktop-pet'),
+      pluginName: String(this.config.pluginName || 'PetWeaver'),
       pluginDeveloper: String(this.config.pluginDeveloper || 'Fafa'),
       authenticationToken
     })

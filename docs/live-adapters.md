@@ -1,25 +1,64 @@
-# 直播平台适配器
+# PetWeaver Live Adapters
 
-运行时使用统一事件：`status`、`danmaku`、`gift`、`superChat`、`guard` 和 `enter`。平台适配器只负责连接平台并映射数据，动作选择仍由 `AppController` 和动作调度器完成。
+> [简体中文](live-adapters.zh-CN.md)
+
+PetWeaver uses one normalized live-event contract across streaming platforms. Adapters connect to a platform and translate its data; they do not choose animations or bypass runtime scheduling.
+
+The current normalized event types are:
+
+- `status`
+- `danmaku`
+- `gift`
+- `superChat`
+- `guard`
+- `enter`
+
+`AppController` applies command parsing, safety rules, event deduplication, AI responses, priorities, and action selection after normalization.
+
+## Adapter boundary
+
+An adapter is responsible for:
+
+- Connection and reconnection.
+- Platform authentication inputs.
+- Polling or socket lifecycle.
+- Mapping user, amount, message, and membership data.
+- Emitting normalized events.
+
+An adapter is not responsible for:
+
+- Selecting a character action.
+- Calling the renderer directly.
+- Persisting public secrets.
+- Implementing character-specific behavior.
+
+The adapter factory lives at `src/main/live/adapter-factory.js`.
 
 ## Bilibili
 
-默认平台。配置 `roomId`；匿名配置失败时可选填 Cookie。Cookie 存入 Windows 安全存储，不写入公开配置。
+Bilibili is the original adapter. Configure a `roomId`; anonymous read-only access is preferred. An optional cookie can be supplied when anonymous configuration fails.
+
+Cookies and other secrets are stored separately from public configuration through the application's secure storage boundary.
 
 ## YouTube
 
-设置页选择 YouTube，然后填写：
+In settings, select YouTube and provide:
 
-- 直播地址或视频 ID：应用通过 `videos.list` 自动读取 `liveStreamingDetails.activeLiveChatId`。
-- Live Chat ID（可选）：已知时可直接填写并跳过自动查询。
-- YouTube Data API Key：仅存入 Windows 安全存储。
+- A livestream URL or video ID. PetWeaver calls `videos.list` and reads `liveStreamingDetails.activeLiveChatId`.
+- A Live Chat ID, when already known. This skips video lookup.
+- A YouTube Data API key, stored outside public configuration.
 
-当前第一版通过 `liveChatMessages.list` 按 API 返回的 `pollingIntervalMillis` 轮询，并使用 `nextPageToken` 读取新增事件。首次连接默认跳过已有聊天历史，避免桌宠把旧消息当成新消息批量触发。
+The initial implementation uses `liveChatMessages.list`:
 
-事件映射：
+- It follows the API-provided `pollingIntervalMillis`.
+- It advances with `nextPageToken`.
+- It skips existing history on the first successful connection so old messages do not trigger a burst of actions.
+- It retries transient failures with bounded scheduling.
 
-| YouTube 类型 | PetWeaver 事件 |
-|---|---|
+## YouTube event mapping
+
+| YouTube message type | PetWeaver event |
+| --- | --- |
 | `textMessageEvent` | `danmaku` |
 | `superChatEvent` | `superChat` |
 | `superStickerEvent` | `gift` |
@@ -29,4 +68,17 @@
 | `giftMembershipReceivedEvent` | `guard` |
 | `giftEvent` | `gift` |
 
-后续版本可把 YouTube 的 `streamList` 作为低延迟实现，但不能绕过统一事件合同。
+A future adapter may use YouTube's streaming live-chat interface for lower latency, but it must preserve the same normalized event contract.
+
+## Adding a platform
+
+A new adapter should:
+
+1. Implement the same start/stop lifecycle as existing adapters.
+2. Emit only normalized events.
+3. Keep platform-specific fields in event metadata when useful.
+4. Accept injectable timers or fetch functions where tests need deterministic control.
+5. Add adapter tests for connection, mapping, pagination/reconnect behavior, and duplicate prevention.
+6. Register through the adapter factory rather than branching throughout `AppController`.
+
+This boundary keeps platform work independent from the 44-action character contract.
