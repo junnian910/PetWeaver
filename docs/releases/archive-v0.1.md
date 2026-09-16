@@ -12,12 +12,17 @@ history; it is not the original source revision used to produce the binaries.
 | File | Original version | SHA-256 |
 | --- | --- | --- |
 | `Fafa-Desktop-Pet-v0.1.1-Windows-Setup.exe` | 0.1.1 | `19560E637E25E0F9F84526704881E6A381E3F8213F393D04EB75610BA3CA449A` |
+| `Fafa-Desktop-Pet-v0.1.1-Windows-Portable.zip` | 0.1.1 | `971B758FC6E4E487108AE0C1FA4E11BBEE622595FD0DC4EB36C8A4468F369410` |
 | `Fafa-Desktop-Pet-v0.1.2-Windows-Setup.exe` | 0.1.2 | `9136F858BB13098C2E2CE0C78A1DA83D93027D23BF5CDBD2FCC47077813768B1` |
+| `Fafa-Desktop-Pet-v0.1.2-Windows-Portable.zip` | 0.1.2 | `9D18850A7E56CFA5C8645A36DC13B6CE729A97BB13760D8EB45964409DBFF7C3` |
 
 ## Verification status
 
 - Windows file metadata reports product versions 0.1.1 and 0.1.2.
 - SHA-256 checksums were calculated immediately before upload.
+- Portable ZIPs were rebuilt from the archived `win-unpacked` directories;
+  log, cache, and user-data paths were excluded and the resulting archive
+  listings were checked before upload.
 - The packaged application archives were scanned for common API-key, token,
   credential, voice-profile, and local-user-path patterns; none were found.
 - The installers are **not code-signed**. Windows may display a SmartScreen

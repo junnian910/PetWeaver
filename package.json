@@ -82,7 +82,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "发发",
+      "shortcutName": "PetWeaver",
       "deleteAppDataOnUninstall": false
     }
   }

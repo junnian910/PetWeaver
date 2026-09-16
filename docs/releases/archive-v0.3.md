@@ -12,11 +12,15 @@ history; it is not the original source revision used to produce the binary.
 | File | Original version | SHA-256 |
 | --- | --- | --- |
 | `Fafa-Desktop-Pet-v0.3.0-Windows-Setup.exe` | 0.3.0 | `C990C4FAE07F10C520D725524F870FD17BE17DBEB2A7A5A4FA2F9E3A3A2D6BF8` |
+| `Fafa-Desktop-Pet-v0.3.0-Windows-Portable.zip` | 0.3.0 | `B95FDAD914CDE23432A9BDC8C9D6565D7E6AFC8A9B401141CC9371287A3FEE22` |
 
 ## Verification status
 
 - Windows file metadata reports product version 0.3.0.
 - The SHA-256 checksum was calculated immediately before upload.
+- The portable ZIP was rebuilt from the archived `win-unpacked` directory;
+  log, cache, and user-data paths were excluded and the resulting archive
+  listing was checked before upload.
 - The packaged application archive was scanned for common API-key, token,
   credential, voice-profile, and local-user-path patterns. No concrete secret
   value was identified; generic cookie-handling code is present as expected for

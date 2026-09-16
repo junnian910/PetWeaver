@@ -373,6 +373,10 @@ Desktop Pet. They are historical binary snapshots, not current PetWeaver
 builds. Each release records artifact checksums, verification limits, and the
 fact that the installers are not code-signed.
 
+The current framework preview is available as
+[`v0.4.0-alpha.1`](https://github.com/junnian910/PetWeaver/releases/tag/v0.4.0-alpha.1)
+with both a Windows installer and a portable ZIP.
+
 ## License
 
 PetWeaver's source code is licensed under the [Apache License 2.0](LICENSE).

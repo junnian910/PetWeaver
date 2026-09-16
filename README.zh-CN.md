@@ -122,6 +122,8 @@ pnpm build:web
 
 [`archive-v0.1`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.1)、[`archive-v0.2`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.2)、[`archive-v0.3`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.3) 保存原版发发桌宠中通过基础核对的安装包。它们属于历史二进制快照，不是当前 PetWeaver 构建。每个 Release 都会列出文件校验值、验证边界，并明确提示安装包尚未进行代码签名。
 
+当前框架预览版为 [`v0.4.0-alpha.1`](https://github.com/junnian910/PetWeaver/releases/tag/v0.4.0-alpha.1)，同时提供 Windows 安装版和免安装 ZIP。
+
 ## 许可证
 
 PetWeaver 源代码使用 [Apache License 2.0](LICENSE) 开源许可证。
