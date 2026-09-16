@@ -149,12 +149,6 @@ pnpm dev
 
 The first launch does not require an API key. Open the settings window and use the diagnostics page to simulate chat, gifts, paid messages, and memberships.
 
-Until the GitHub repository rename is complete, use the current clone URL:
-
-```powershell
-git clone https://github.com/junnian910/Desktop-pet-fafa.git
-```
-
 ## Basic controls
 
 - Drag the character to move it.
