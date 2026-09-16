@@ -365,6 +365,6 @@ Please keep character-specific behavior in pet packages whenever possible. Chang
 
 ## License
 
-The repository is currently public but has not yet selected a project-wide open-source license. Until a root `LICENSE` file is added, the source remains copyright-protected and redistribution rights are not granted automatically.
+PetWeaver's source code is licensed under the [Apache License 2.0](LICENSE).
 
-Selecting an OSI-approved license is a required project-administration step before the first stable PetWeaver release.
+Character artwork, animation, voice, music, fonts, model files, and other media may have separate terms. A pet package must document those rights before it is redistributed; the Apache-2.0 license does not automatically cover third-party media bundled with a character.
