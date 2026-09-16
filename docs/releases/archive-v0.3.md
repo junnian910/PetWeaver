@@ -4,6 +4,9 @@ This release preserves the final role-specific Fafa Desktop Pet installer
 before the PetWeaver v0.4 framework migration. It is a historical snapshot,
 not a new build made on the GitHub publication date.
 
+The `archive-v0.3` tag marks this archive manifest in the cleaned public
+history; it is not the original source revision used to produce the binary.
+
 ## Artifact
 
 | File | Original version | SHA-256 |

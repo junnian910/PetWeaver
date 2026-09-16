@@ -5,6 +5,9 @@ original Fafa Desktop Pet v0.2 series. Intermediate portable directories were
 not uploaded because they contained development logs or could not pass the
 same privacy gate as the installers.
 
+The `archive-v0.2` tag marks this archive manifest in the cleaned public
+history; it is not the original source revision used to produce the binaries.
+
 ## Artifacts
 
 | File | Original version | SHA-256 |

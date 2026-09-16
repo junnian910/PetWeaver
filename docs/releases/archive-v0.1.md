@@ -4,6 +4,9 @@ This release preserves the two verified installer artifacts found for the
 original Fafa Desktop Pet v0.1 series. They were built before the PetWeaver
 repository was published and are provided for historical reference.
 
+The `archive-v0.1` tag marks this archive manifest in the cleaned public
+history; it is not the original source revision used to produce the binaries.
+
 ## Artifacts
 
 | File | Original version | SHA-256 |
