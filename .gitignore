@@ -1,0 +1,38 @@
+node_modules/
+.pnpm-store/
+dist/
+release/
+release*/
+release*.zip
+test-build/
+test-build*/
+portable-v*/
+build-tmp*/
+general-test/
+coverage/
+*.log
+.vite/
+
+# Generated Remotion output, caches, and render scratch space.
+remotion-pet/out/
+remotion-pet/output/
+remotion-pet/render/
+remotion-pet/.remotion/
+remotion-pet/node_modules/
+
+# Generated or temporary local work; keep existing directories on disk.
+asset-work/
+asset-work*/
+artifacts/
+qa-pet-actions/
+pet-animation-run/
+tmp/
+*.tmp
+*.temp
+*.cache
+
+# Local agent/tooling state and private voice profiles.
+.agents/
+.atomcode/
+ponytail/
+*.voicebox.zip

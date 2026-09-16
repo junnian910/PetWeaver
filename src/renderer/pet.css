@@ -1,0 +1,19 @@
+:root { color-scheme: dark; font-family: "Microsoft YaHei UI", sans-serif; }
+* { box-sizing: border-box; user-select: none; outline: none; }
+html, body, #stage { width: 100%; height: 100%; margin: 0; overflow: hidden; background: transparent; }
+#stage { position: relative; cursor: default; border: 0; box-shadow: none; }
+#stage.pet-hover { cursor: grab; }
+#stage.dragging { cursor: grabbing; }
+#pet-stack { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 2; opacity: 0; transform-origin: 50% 100%; pointer-events: none; }
+#pet-stack.layout-ready { opacity: 1; }
+.pet-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; object-position: center bottom; opacity: 0; filter: blur(4px); transform: scaleX(var(--facing, 1)); transform-origin: 50% 100%; transition: opacity 260ms ease-in-out, filter 260ms ease-in-out; pointer-events: none; -webkit-user-drag: none; }
+.pet-layer.visible { opacity: 1; filter: blur(0); }
+#bubble { position: absolute; z-index: 3; bottom: var(--bubble-bottom, 240px); left: 50%; width: max-content; max-width: var(--bubble-width, 280px); padding: 11px 16px; color: #2a1830; background: rgba(255,250,253,.97); border: 2px solid #ff74b8; border-radius: 18px 18px 18px 5px; box-shadow: 0 8px 30px rgba(70,20,60,.24); font-weight: 700; line-height: 1.45; opacity: 0; transform: translate(-50%, 8px) scale(.96); transition: bottom .2s ease, max-width .2s ease, opacity .22s ease, transform .22s ease; pointer-events: none; }
+#bubble::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 14px; height: 14px; background: inherit; border-right: 2px solid #ff74b8; border-bottom: 2px solid #ff74b8; transform: translateX(-50%) rotate(45deg); }
+#bubble.visible { opacity: 1; transform: translate(-50%, 0) scale(1); }
+#startup-error { display: none; position: absolute; z-index: 7; inset: auto 24px 24px; padding: 16px 18px; color: #3c2031; background: #fff5fa; border: 1px solid #ef7db4; border-radius: 14px; box-shadow: 0 12px 36px rgba(62,20,48,.2); }
+#startup-error.visible { display: grid; gap: 4px; }
+#startup-error span { color: #795c6c; font-size: 12px; }
+#stage.docked #pet-stack { transform: scale(.26) !important; transform-origin: 50% 100%; }
+#stage.docked #bubble { display: none; }
+#stage.avatar-vts #pet-stack { opacity: 0; pointer-events: none; }

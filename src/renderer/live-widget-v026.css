@@ -1,0 +1,90 @@
+@import "./ui-theme.css";
+
+body { @apply text-fafa-ink antialiased; }
+.widget {
+    @apply overflow-hidden rounded-[18px] border border-fafa-border shadow-fafa-float;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    margin: 8px;
+    background: color-mix(in srgb, var(--color-fafa-surface) 94%, transparent);
+    backdrop-filter: blur(14px);
+  }
+  .widget-head { @apply gap-2.5 border-b border-fafa-border bg-fafa-surface-muted/80 px-4 py-3; }
+  .dot { @apply size-2.5 bg-fafa-subtle; }
+  .dot.connected { @apply bg-fafa-success; }
+  .dot.mock, .dot.reconnecting { @apply bg-fafa-warning; }
+  .dot.error { @apply bg-fafa-danger; }
+  .widget-title { @apply text-sm font-bold tracking-[-0.01em] text-fafa-ink; }
+  .widget-close { @apply size-9 rounded-xl text-fafa-muted transition-colors hover:bg-fafa-brand-soft hover:text-fafa-brand-strong; }
+  .widget-merge { @apply grid size-9 place-items-center rounded-xl text-fafa-muted transition-colors hover:bg-fafa-brand-soft hover:text-fafa-brand-strong; -webkit-app-region: no-drag; }
+  .widget-merge svg { @apply size-[17px]; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+.widget-meta { @apply px-4 py-2.5 text-xs font-medium leading-5 text-fafa-muted; }
+.widget-state {
+  @apply grid min-h-0 flex-1 place-content-center gap-3 overflow-hidden px-8 py-10 text-center;
+}
+.widget-state-kicker { @apply text-[11px] font-bold tracking-[0.1em] text-fafa-subtle; }
+.widget-state h2 { @apply text-xl font-bold tracking-[-0.02em] text-fafa-ink; }
+.widget-state p { @apply mx-auto max-w-md text-sm leading-6 text-fafa-muted; }
+.widget-state-actions { @apply mx-auto mt-2 grid justify-items-center gap-2; }
+.widget-state-action { @apply inline-flex min-h-10 items-center justify-center rounded-xl border border-fafa-brand bg-fafa-brand px-4 text-[13px] font-semibold text-white transition hover:border-fafa-brand-strong hover:bg-fafa-brand-strong; }
+.widget-state-preview { @apply inline-flex min-h-10 items-center justify-center rounded-xl border border-fafa-border bg-fafa-surface px-4 text-[13px] font-semibold text-fafa-ink transition hover:border-fafa-brand hover:text-fafa-brand-strong; }
+.widget[data-state="connecting"] .widget-state-kicker { @apply text-fafa-warning; }
+.widget[data-state="error"] .widget-state-kicker { @apply text-fafa-danger; }
+.widget[data-state="ready"] .widget-state-kicker { @apply text-fafa-success; }
+.widget-grid {
+    @apply gap-px bg-fafa-border;
+    grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr) minmax(0, 1fr) minmax(156px, .48fr);
+  }
+  .widget-column, .relationship-rail { @apply bg-fafa-surface; }
+  .widget-column.is-detaching, .relationship-rail.is-detaching { @apply opacity-60; }
+  .column-head { @apply border-b border-fafa-border px-4 py-3; }
+  .column-head h2 { @apply text-xs font-bold tracking-[0.02em] text-fafa-ink; }
+  .column-head span { @apply rounded-full bg-fafa-brand-soft px-2 py-0.5 font-mono text-[11px] font-bold text-fafa-brand-strong; }
+  .feed { @apply gap-2 px-3 py-3; }
+  .feed:empty { @apply grid place-content-center px-6 text-center text-xs leading-5 text-fafa-muted; }
+  #live-feed:empty::before { content: "等待直播事件"; }
+  #ai-feed:empty::before { content: "AI 回答会显示在这里"; }
+  #action-feed:empty::before { content: "触发的动作会显示在这里"; }
+  .feed li { @apply gap-2 rounded-xl border border-transparent bg-fafa-surface-muted p-2.5 text-xs leading-5; }
+  .badge { @apply rounded-md bg-fafa-brand-soft px-1.5 py-0.5 text-[10px] font-bold text-fafa-brand-strong; }
+  .badge.gift { @apply bg-amber-100 text-amber-900; }
+  .badge.superChat { @apply bg-violet-100 text-violet-900; }
+  .badge.guard { @apply bg-sky-100 text-sky-900; }
+  .badge.enter { @apply bg-emerald-100 text-emerald-900; }
+  .badge.status, .badge.dim { @apply bg-fafa-surface-muted text-fafa-muted; }
+  .text { @apply text-fafa-ink; }
+  .text strong, .user { @apply font-bold; }
+  .clock, .ai-trigger { @apply text-[10px] text-fafa-subtle; }
+  .ai-answer { @apply mt-1 text-fafa-ink; }
+  .fans-medal { @apply mr-1 rounded-md bg-fafa-accent px-1.5 text-[10px] text-white; }
+  .relationship-rail { @apply px-4 py-5; }
+  .rail-kicker { @apply text-[11px] font-bold tracking-[0.08em] text-fafa-subtle; }
+  .relationship-rail strong { @apply mt-2 text-lg font-bold text-fafa-ink; }
+  .relationship-rail output { @apply mt-5 font-mono text-3xl font-bold text-fafa-brand-strong; }
+  .intimacy-meter { @apply mt-4 bg-fafa-surface-muted; }
+  .intimacy-meter span { background: var(--color-fafa-brand); }
+  .rail-caption, .relationship-rail p { @apply text-xs leading-5 text-fafa-muted; }
+  .widget-foot { @apply border-t border-fafa-border bg-fafa-surface-muted/80 px-4 py-2.5 text-xs text-fafa-muted; }
+.feed::-webkit-scrollbar-thumb { background: var(--color-fafa-border); }
+
+body.is-detached-widget .widget { margin: 4px; width: calc(100% - 8px); height: calc(100% - 8px); }
+body.is-detached-widget .widget-meta,
+body.is-detached-widget .widget-state,
+body.is-detached-widget .widget-foot { display: none !important; }
+body.is-detached-widget .widget-grid { @apply grid flex-1; grid-template-columns: minmax(0, 1fr); }
+body.is-detached-widget .widget-column,
+body.is-detached-widget .relationship-rail { min-height: 0; }
+body.is-detached-widget .feed:empty::before { content: none; }
+body.is-detached-widget .relationship-rail { @apply grid content-start gap-2; }
+
+@media (max-width: 900px) {
+  .widget-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .relationship-rail { @apply bg-fafa-surface; }
+}
+
+@media (max-width: 640px) {
+  .widget { width: calc(100% - 8px); height: calc(100% - 8px); margin: 4px; }
+  .widget-grid { grid-template-columns: 1fr; }
+  .widget-column { min-height: 160px; }
+  .relationship-rail { min-height: 106px; }
+}

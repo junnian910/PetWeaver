@@ -1,0 +1,4 @@
+interface:
+  display_name: "PetWeaver Pixel Pet"
+  short_description: "Build full PetWeaver pixel animation action packs"
+  default_prompt: "Use $petweaver-pixel-pet to generate a complete pixel-art action pack for a PetWeaver character."

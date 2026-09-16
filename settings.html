@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="发发桌宠控制台">
+  <title>发发控制台</title>
+  <link rel="stylesheet" href="/src/renderer/settings.css">
+  <link rel="stylesheet" href="/src/renderer/settings-v026.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到设置内容</a>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">FA</span><div><b data-i18n="brand.title">发发控制台</b></div></div>
+      <nav aria-label="设置分类">
+        <div class="nav-group">
+          <span class="nav-group-label">桌宠</span>
+          <button data-tab="overview" class="active" type="button" aria-current="page"><b>发发概览</b></button>
+          <button data-tab="general" type="button"><b data-i18n="nav.general">基础设置</b></button>
+          <button data-tab="relationship" type="button"><b data-i18n="nav.relationship">关系与成长</b></button>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">直播</span>
+          <button data-tab="live" type="button"><b data-i18n="nav.live">直播互动</b></button>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">形象与内容</span>
+          <button data-tab="avatar" type="button"><b data-i18n="nav.avatar">形象与动捕</b></button>
+          <button data-tab="ai" type="button"><b data-i18n="nav.ai">语音与 AI</b></button>
+          <button data-tab="assign" type="button"><b data-i18n="nav.assign">动作分配</b></button>
+          <button data-tab="actions" type="button"><b data-i18n="nav.actions">动作设计预览</b></button>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">自动化</span>
+          <button data-tab="schedule" type="button"><b data-i18n="nav.schedule">定时与指令</b></button>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-label">高级与诊断</span>
+          <button data-tab="diagnostics" type="button"><b data-i18n="nav.diagnostics">运行诊断</b></button>
+          <button data-tab="testcenter" type="button"><b data-i18n="nav.testcenter">测试中心</b></button>
+        </div>
+      </nav>
+      <div class="shortcut-note"><kbd>Ctrl</kbd><span>+</span><kbd>Alt</kbd><span>+</span><kbd>F</kbd><p data-i18n="nav.shortcut">切换点击穿透</p></div>
+    </aside>
+
+    <main id="main-content" class="workspace">
+      <header class="topbar">
+        <div><h1 id="page-title">发发概览</h1><p id="page-description">查看今天的状态，并从常用操作开始。</p></div>
+        <div class="topbar-actions">
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换为深色主题" title="切换为深色主题" aria-pressed="false">切换为深色主题</button>
+          <span id="save-state" class="save-state" role="status"><i></i><span data-i18n="save.autosaved">所有改动都会自动保存</span></span>
+        </div>
+      </header>
+
+      <form id="settings-form">
+        <section data-panel="overview" class="active" aria-labelledby="overview-title">
+          <article class="overview-hero">
+            <div class="overview-hero-copy">
+              <span class="overview-eyebrow">今天的发发</span>
+              <h2 id="overview-title">今天也和发发一起度过吧</h2>
+              <p id="overview-summary">正在读取直播与服务状态…</p>
+              <div class="overview-actions">
+                <button id="overview-live-action" class="primary" type="button">配置直播互动</button>
+              </div>
+            </div>
+            <img class="overview-pet" src="./assets/fafa-pet-final.png" alt="">
+          </article>
+
+          <div class="overview-section-head">
+            <div><span class="overview-eyebrow">运行状态</span><h3>今天的状态</h3></div>
+            <p>基于当前服务状态实时更新。</p>
+          </div>
+          <div class="overview-status-grid" aria-live="polite">
+            <article class="overview-status" id="overview-live-status" data-tone="off"><small>直播互动</small><strong>读取中</strong><span>正在检查连接状态</span></article>
+            <article class="overview-status" id="overview-ai-status" data-tone="off"><small>语音与 AI</small><strong>读取中</strong><span>正在检查服务状态</span></article>
+            <article class="overview-status" id="overview-relationship-status" data-tone="off"><small>今日互动</small><strong>0 次</strong><span>关系数据加载后显示</span></article>
+          </div>
+
+          <article class="overview-next-step">
+            <div><span class="overview-eyebrow">下一步</span><h3 id="overview-next-title">从直播互动开始</h3><p id="overview-next-description">配置直播间后，发发就能接收弹幕、礼物和其他互动。</p></div>
+            <button id="overview-next-action" class="secondary" type="button">前往直播互动</button>
+          </article>
+
+          <div class="overview-section-head overview-quick-head"><div><span class="overview-eyebrow">快捷操作</span><h3>常用操作</h3></div></div>
+          <div class="overview-quick-actions">
+            <button data-overview-action="reset-position" class="secondary" type="button"><span>回到主屏</span><small>将发发移回可见位置</small></button>
+            <button data-overview-action="actions" class="secondary" type="button"><span>预览动作</span><small>快速试播一个动作</small></button>
+            <button data-overview-action="general" class="secondary" type="button"><span>桌宠设置</span><small>调整大小、交互和音量</small></button>
+          </div>
+        </section>
+
+        <!-- P1 基础设置 -->
+        <section data-panel="general" aria-labelledby="general-title">
+          <div class="section-subline"><p id="general-title" data-i18n="panel.general.sub">这些选项即时影响桌宠窗口，不需要重新启动。</p></div>
+          <article class="control-block range-block">
+            <div class="control-title"><div><small data-i18n="label.small.scale">角色显示</small><h3 data-i18n="label.scale">角色尺寸</h3></div><output id="scale-output">52%</output></div>
+            <input name="scale" type="range" min="0.3" max="0.52" step="0.01"><div class="range-legend"><span data-i18n="legend.mini">迷你</span><span data-i18n="legend.std">标准</span></div>
+          </article>
+          <div class="option-group">
+            <small class="option-group-caption" data-i18n="group.window">窗口行为</small>
+            <div class="toggle-stack toggle-stack-inline">
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.alwaysOnTop">始终置顶</b><small data-i18n="opt.alwaysOnTop.d">让发发停留在其他普通窗口上方</small></span><label class="toggle-control"><input name="alwaysOnTop" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.clickThrough">点击穿透</b><small data-i18n="opt.clickThrough.d">鼠标操作下方窗口，使用全局快捷键恢复</small></span><label class="toggle-control"><input name="clickThrough" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.transparentHitThrough">透明区域自动穿透</b><small data-i18n="opt.transparentHitThrough.d">人物可以互动，窗口内透明位置自动把点击交给下方程序</small></span><label class="toggle-control"><input name="transparentHitThrough" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.launchAtLogin">开机自动启动</b><small data-i18n="opt.launchAtLogin.d">登录 Windows 后让发发自动出现</small></span><label class="toggle-control"><input name="launchAtLogin" type="checkbox"><i></i></label></div>
+            </div>
+          </div>
+          <div class="option-group">
+            <small class="option-group-caption" data-i18n="group.interaction">互动方式</small>
+            <div class="toggle-stack toggle-stack-inline">
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.pettingEnabled">头部抚摸</b><small data-i18n="opt.pettingEnabled.d">在头顶左右往返移动鼠标时触发开心反馈</small></span><label class="toggle-control"><input name="pettingEnabled" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.tossEnabled">甩飞回弹</b><small data-i18n="opt.tossEnabled.d">快速拖动后松手，发发会沿释放方向飞出并撞击屏幕边缘</small></span><label class="toggle-control"><input name="tossEnabled" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.dockEnabled">贴边收纳</b><small data-i18n="opt.dockEnabled.d">拖动到屏幕边缘自动缩成小图标，双击图标恢复</small></span><label class="toggle-control"><input name="dockEnabled" type="checkbox"><i></i></label></div>
+            </div>
+          </div>
+          <div class="option-group">
+            <small class="option-group-caption" data-i18n="group.adjust">手感调节</small>
+            <div class="control-grid feature-grid two">
+              <article class="control-block range-block compact">
+                <div class="control-title"><div><h3 data-i18n="label.pettingSensitivity">抚摸灵敏度</h3></div><output id="petting-output">1.0× · 标准</output></div>
+                <input name="pettingSensitivity" type="range" min="0.5" max="2" step="0.1"><div class="range-legend range-legend-numeric"><span>0.5× 稳妥</span><span>1.0× 标准</span><span>2.0× 灵敏</span></div>
+              </article>
+              <article class="control-block range-block compact">
+                <div class="control-title"><div><h3 data-i18n="label.tossStrength">甩飞力度</h3></div><output id="toss-output">1.0× · 标准</output></div>
+                <input name="tossStrength" type="range" min="0.4" max="2" step="0.1"><div class="range-legend range-legend-numeric"><span>0.4× 轻柔</span><span>1.0× 标准</span><span>2.0× 强力</span></div>
+              </article>
+            </div>
+          </div>
+          <article class="control-block range-block">
+            <div class="control-title"><div><small data-i18n="label.small.volume">声音播放</small><h3 data-i18n="label.volume">播放音量</h3></div><output id="volume-output">80%</output></div>
+            <input name="volume" type="range" min="0" max="1" step="0.05"><div class="range-legend"><span data-i18n="legend.mute">静音</span><span data-i18n="legend.comfy">舒适</span><span data-i18n="legend.loud">响亮</span></div>
+          </article>
+          <button id="reset-position" class="secondary utility-button" type="button" data-i18n="btn.resetPosition">将发发移回主屏幕</button>
+        </section>
+
+        <!-- P2 直播互动 -->
+        <section data-panel="live" aria-labelledby="live-title">
+          <div class="section-subline"><p id="live-title" data-i18n="panel.live.sub">匿名读取弹幕、礼物、SC 和上舰事件，也能在这里测试所有直播反馈。</p></div>
+          <article class="service-panel service-panel-toggle" id="live-connection-panel">
+            <header><div><small>直播连接</small><h3 data-i18n="opt.liveEnabled">开启直播连接</h3><p class="service-header-note" data-i18n="opt.liveEnabled.d">关闭时桌宠仍可离线运行与互动</p></div><div class="service-actions"><label class="compact-switch"><input name="liveEnabled" type="checkbox"><i></i></label><button id="live-test-open" class="secondary" type="button" data-i18n="btn.liveTest">测试直播连接</button><span class="signal-light" id="live-light" data-tone="off" title="直播状态"></span></div></header>
+            <div class="collapse-content" id="live-detail">
+              <div class="field-grid">
+                <label class="field" style="grid-column:1 / -1"><span>直播平台</span><select name="livePlatform"><option value="bilibili">Bilibili</option><option value="youtube">YouTube</option></select><small>选择后只使用对应平台的连接配置。</small></label>
+                <label class="field" data-live-platform-block="bilibili"><span data-i18n="label.roomId">直播间房间号</span><input name="roomId" inputmode="numeric" pattern="[0-9]*" placeholder="例如 123456"><small data-i18n="label.roomId.d">使用直播间地址中的数字房间号</small></label>
+                <label class="field" data-live-platform-block="bilibili"><span data-i18n="label.broadcasterUid">主播 UID</span><input name="broadcasterUid" inputmode="numeric" pattern="[0-9]*" placeholder="用于开奖权限"><small data-i18n="label.broadcasterUid.d">只有该 UID 可以执行开奖</small></label>
+                <label class="field" data-live-platform-block="bilibili" style="grid-column:1 / -1"><span data-i18n="label.bilibiliCookie">B站 Cookie（选填）</span><input name="bilibiliCookie" type="password" autocomplete="new-password" placeholder="登录 B 站后从浏览器复制 Cookie，留空不修改"><small data-i18n="label.bilibiliCookie.d">如果匿名连接一直失败或报 -352，建议填写已登录 B 站的 Cookie；仅用于获取弹幕服务器配置，保存在 Windows 安全存储。</small></label>
+                <label class="field" data-live-platform-block="youtube"><span>YouTube 直播地址或视频 ID</span><input name="youtubeVideoId" autocomplete="off" placeholder="https://youtube.com/watch?v=..."><small>推荐填写；应用会自动读取 activeLiveChatId。</small></label>
+                <label class="field" data-live-platform-block="youtube"><span>Live Chat ID（高级，可选）</span><input name="youtubeLiveChatId" autocomplete="off" placeholder="已知时可直接填写"><small>填写后跳过视频信息查询。</small></label>
+                <label class="field" data-live-platform-block="youtube"><span>YouTube Data API Key</span><input name="youtubeApiKey" type="password" autocomplete="new-password" placeholder="留空不修改"><small>仅用于读取公开直播聊天，保存在 Windows 安全存储。</small></label>
+              </div>
+              <div class="utility-row setup-guide-row"><button id="live-guide-open" class="secondary" type="button" data-i18n="btn.liveGuide">不知道怎么填？点我看教程</button></div>
+            </div>
+          </article>
+
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.events">直播事件</small><h3 data-i18n="panel.live.events">事件开关</h3></div></header>
+            <div class="toggle-stack toggle-stack-inline">
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.liveDanmaku">弹幕事件</b><small data-i18n="opt.liveDanmaku.d">接收直播间弹幕并触发发发反应</small></span><label class="toggle-control"><input name="liveDanmaku" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.liveGift">礼物事件</b><small data-i18n="opt.liveGift.d">接收礼物并触发感谢反应</small></span><label class="toggle-control"><input name="liveGift" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.liveSuperChat">Super Chat 事件</b><small data-i18n="opt.liveSuperChat.d">接收 SC 留言并触发播报</small></span><label class="toggle-control"><input name="liveSuperChat" type="checkbox"><i></i></label></div>
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.liveGuard">上舰事件</b><small data-i18n="opt.liveGuard.d">接收上舰并触发庆祝反应</small></span><label class="toggle-control"><input name="liveGuard" type="checkbox"><i></i></label></div>
+            </div>
+          </article>
+
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.safety">内容安全</small><h3 data-i18n="panel.live.safety">内容安全</h3></div><div class="service-actions"><label class="compact-switch"><input name="safetyEnabled" type="checkbox"><i></i></label></div></header>
+            <div class="collapse-content" id="safety-detail">
+              <div class="inline-note"><small data-i18n="panel.live.safety.d">命中敏感词的弹幕、SC 与语音转写将被拦截，敏感原文不会进入 AI 或语音合成。</small></div>
+              <label class="field safety-keywords-field"><span data-i18n="label.safetyKeywords">敏感词</span><div id="safety-keyword-list" class="keyword-list" aria-label="敏感词列表"></div><button id="add-safety-keyword" class="secondary" type="button">＋ 添加敏感词</button><small data-i18n="label.safetyKeywords.d">匹配不区分大小写，最多 200 个关键词；弹幕、SC 与语音转写命中后会被拦截。</small></label>
+            </div>
+          </article>
+
+          <article class="service-panel unavailable-panel">
+            <header><div><small>点歌服务</small><h3>点歌功能</h3></div><span class="unavailable-status">暂未开发</span></header>
+            <p>点歌功能目前保持关闭，不会发起点歌请求。</p>
+          </article>
+
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.console">直播控制</small><h3 data-i18n="panel.live.console">控制台</h3></div></header>
+            <div class="console-grid" aria-live="polite">
+              <article class="console-status"><small data-i18n="label.small.status">连接状态</small><h3 data-i18n="label.liveStatus">直播状态</h3>
+                <div class="console-status-rows" id="console-status-rows">
+                  <div class="console-status-row"><span data-i18n="label.connStatus">连接状态</span><b id="console-live-status" data-tone="off">—</b></div>
+                  <div class="console-status-row"><span data-i18n="label.curTrack">当前曲目</span><b id="console-track">—</b></div>
+                  <div class="console-status-row"><span data-i18n="label.pausedStatus">暂停状态</span><b id="console-live-paused">—</b></div>
+                </div>
+              </article>
+            </div>
+            <div class="utility-row console-actions">
+              <button id="console-toggle-pause" class="secondary utility-button" type="button" data-i18n="btn.pauseLive">暂停直播互动</button>
+              <button id="console-reconnect" class="secondary utility-button" type="button" data-i18n="btn.reconnect">立即重连</button>
+              <button id="console-clear-actions" class="secondary utility-button" type="button" data-i18n="btn.clearActions">清空直播待播动作</button>
+              <button id="console-toggle-widget" class="secondary utility-button" type="button" data-i18n="btn.toggleWidget">桌面悬浮组件</button>
+            </div>
+            <div class="inline-note" id="console-note" role="status"><small data-i18n="label.consoleNote">点击按钮操作直播互动；状态实时更新。</small></div>
+            <article class="service-panel console-timeline-panel">
+              <header><div><small data-i18n="label.small.timeline">事件记录</small><h3 data-i18n="label.timeline">事件时间线</h3></div><div class="service-actions"><button id="console-refresh-timeline" type="button" data-i18n="btn.refresh">刷新</button></div></header>
+              <div id="console-timeline" class="console-timeline" aria-live="polite"></div>
+            </article>
+          </article>
+
+          <div class="inline-note testcenter-link-note"><small>想逐项测试弹幕、礼物、语音与点歌？去「测试中心」面板。</small><button id="goto-testcenter" class="secondary" type="button">打开测试中心</button></div>
+        </section>
+
+        <!-- P2.5 形象与动捕：Live2D + VTube Studio -->
+        <section data-panel="avatar" aria-labelledby="avatar-title">
+          <div class="section-subline"><p id="avatar-title" data-i18n="panel.avatar.sub">管理桌宠的形象来源：继续使用本地视频动作，或者导入 Live2D 模型，或者接入 VTube Studio。</p></div>
+
+          <article class="service-panel" id="pet-package-panel">
+            <header>
+              <div><small>PetWeaver 角色包</small><h3>当前桌宠角色</h3></div>
+              <div class="service-actions"><button id="pet-package-rescan" class="secondary" type="button">重新扫描</button><button id="pet-package-open-folder" class="secondary" type="button">打开角色包目录</button></div>
+            </header>
+            <div class="field-grid">
+              <label class="field"><span>角色包</span><select name="petPackageId"></select><small>把完整角色包放入打开的目录，每个子目录需要一个通过校验的 pet.json。</small></label>
+              <div class="inline-note" id="pet-package-status" role="status"><small>正在读取角色包…</small></div>
+            </div>
+          </article>
+
+          <div class="avatar-mode-grid" role="radiogroup" aria-label="形象模式">
+            <label class="avatar-mode-card">
+              <input type="radio" name="avatarMode" value="video">
+              <i class="mode-radio"></i>
+              <span class="avatar-mode-icon" aria-hidden="true">▶</span>
+              <span class="avatar-mode-copy"><b data-i18n="avatar.mode.video">视频动作</b><small data-i18n="avatar.mode.video.d">默认方案，桌宠窗口直接播放本地动作视频</small></span>
+              <span class="signal-light" id="avatar-video-light" data-tone="off" title="视频模式状态"></span>
+            </label>
+            <button class="avatar-mode-card avatar-mode-card-unavailable" type="button" role="radio" aria-disabled="true" data-avatar-unavailable="live2d">
+              <i class="mode-radio" aria-hidden="true"></i>
+              <span class="avatar-mode-icon" aria-hidden="true">◈</span>
+              <span class="avatar-mode-copy"><b data-i18n="avatar.mode.live2d">Live2D 模型</b><small data-i18n="avatar.mode.live2d.d">导入 Cubism 模型文件或 ZIP 压缩包，在设置页校验与预览</small></span>
+              <span class="unavailable-badge">暂未完成</span>
+            </button>
+            <button class="avatar-mode-card avatar-mode-card-unavailable" type="button" role="radio" aria-disabled="true" data-avatar-unavailable="vts">
+              <i class="mode-radio" aria-hidden="true"></i>
+              <span class="avatar-mode-icon" aria-hidden="true">⌁</span>
+              <span class="avatar-mode-copy"><b data-i18n="avatar.mode.vts">VTube Studio</b><small data-i18n="avatar.mode.vts.d">通过官方插件 API 连接 VTube Studio，读取模型、表情与快捷键</small></span>
+              <span class="unavailable-badge">暂未完成</span>
+            </button>
+          </div>
+
+          <article class="service-panel" id="live2d-panel">
+            <header>
+              <div><small>模型导入</small><h3 data-i18n="avatar.live2d.title">Live2D 模型库</h3></div>
+              <div class="service-actions">
+                <span class="signal-light" id="avatar-live2d-panel-light" data-tone="off"></span>
+                <button id="avatar-import-open" type="button" data-i18n="avatar.btn.import">导入模型或压缩包</button>
+                <button id="avatar-open-folder" type="button" data-i18n="avatar.btn.folder">打开模型目录</button>
+              </div>
+            </header>
+            <div id="avatar-drop-zone" class="avatar-drop-zone">
+              <b data-i18n="avatar.drop.title">把 .zip / .moc3 / .model3.json 拖到这里</b>
+              <span data-i18n="avatar.drop.d">导入后会保存到发发自己的模型目录；支持多文件与多模型压缩包。</span>
+              <button id="avatar-drop-open" class="secondary" type="button" data-i18n="avatar.btn.choose">选择文件</button>
+            </div>
+            <div class="inline-note"><small data-i18n="avatar.live2d.note">当前版本在桌宠窗口使用模型贴图预览；完整 Cubism 动态渲染需要后续接入 SDK，想直接获得完整动捕可切换到 VTube Studio。</small></div>
+            <div class="field-grid two avatar-model-pick">
+              <label class="field"><span data-i18n="avatar.live2d.active">当前模型</span><select name="avatarLive2dModel" id="avatarLive2dModelSelect"></select><small data-i18n="avatar.live2d.active.d">切换后保存，桌宠会读取该模型的预览贴图。</small></label>
+              <label class="field avatar-preview-field"><span data-i18n="avatar.live2d.preview">模型预览</span><div id="avatar-preview-box" class="avatar-preview-box"><span data-i18n="avatar.live2d.preview.empty">导入模型后显示第一张贴图</span></div></label>
+            </div>
+            <div id="avatar-model-list" class="avatar-model-list"></div>
+            <div class="utility-row avatar-test-row">
+              <button id="avatar-test-live2d" class="secondary utility-button" type="button" data-i18n="avatar.btn.validate">校验当前模型</button>
+              <button id="avatar-rescan" class="secondary utility-button" type="button" data-i18n="avatar.btn.rescan">重新扫描</button>
+            </div>
+            <div id="avatar-live2d-result" class="dialog-reply" role="status" aria-live="polite"></div>
+          </article>
+
+          <article class="service-panel" id="vts-panel">
+            <header>
+              <div><small>VTube Studio 接口</small><h3 data-i18n="avatar.vts.title">VTube Studio 接口</h3></div>
+              <div class="service-actions">
+                <span class="signal-light" id="avatar-vts-panel-light" data-tone="off"></span>
+                <button id="avatar-vts-test" class="secondary" type="button" data-i18n="avatar.btn.connect">连接测试</button>
+              </div>
+            </header>
+            <div class="mode-banner mode-banner-compact" id="avatar-vts-enable-banner">
+              <div><b data-i18n="avatar.vts.enabled">启用 VTube Studio 形象</b><small data-i18n="avatar.vts.enabled.d">关闭时只保存接口参数，不会影响视频动作模式。</small></div>
+              <label class="compact-switch"><input name="avatarVtsEnabled" type="checkbox"><i></i></label>
+            </div>
+            <div class="field-grid three">
+              <label class="field"><span data-i18n="avatar.vts.host">主机地址</span><input name="avatarVtsHost" placeholder="127.0.0.1"><small data-i18n="avatar.vts.host.d">通常保持 127.0.0.1 即可</small></label>
+              <label class="field"><span data-i18n="avatar.vts.port">端口</span><input name="avatarVtsPort" inputmode="numeric" placeholder="8001"><small data-i18n="avatar.vts.port.d">VTube Studio 默认插件端口 8001</small></label>
+              <label class="field"><span data-i18n="avatar.vts.pluginName">插件名</span><input name="avatarVtsPluginName" placeholder="fafa-desktop-pet"><small data-i18n="avatar.vts.pluginName.d">认证弹窗里显示的名称</small></label>
+              <label class="field" style="grid-column:1 / -1"><span data-i18n="avatar.vts.developer">开发者名</span><input name="avatarVtsDeveloper" placeholder="Fafa"><small data-i18n="avatar.vts.developer.d">用于 VTube Studio 插件认证，不是账号密码。</small></label>
+            </div>
+            <div class="utility-row avatar-test-row">
+              <button id="avatar-vts-auth" class="secondary" type="button" data-i18n="avatar.btn.auth">请求插件认证</button>
+              <button id="avatar-vts-reload-models" class="secondary" type="button" data-i18n="avatar.btn.models">读取模型</button>
+              <button id="avatar-vts-reload-expressions" class="secondary" type="button" data-i18n="avatar.btn.expressions">读取表情</button>
+              <button id="avatar-vts-reload-hotkeys" class="secondary" type="button" data-i18n="avatar.btn.hotkeys">读取快捷键</button>
+              <button id="avatar-vts-apply-model" class="secondary" type="button" data-i18n="avatar.btn.applyModel">载入选中模型</button>
+            </div>
+            <div id="avatar-vts-status" class="inline-note" role="status"><small data-i18n="avatar.vts.status.empty">尚未连接 VTube Studio。点击「连接测试」开始。</small></div>
+            <div class="vts-lists">
+              <div class="vts-list-block">
+                <div class="vts-list-head"><b data-i18n="avatar.vts.models">可用模型</b><select id="avatar-vts-model-select" aria-label="可用模型"></select></div>
+                <div id="avatar-vts-expression-list" class="vts-item-list" aria-live="polite"></div>
+              </div>
+              <div class="vts-list-block">
+                <div class="vts-list-head"><b data-i18n="avatar.vts.hotkeys.title">当前模型快捷键</b><button id="avatar-vts-clear-hotkeys" class="secondary" type="button" data-i18n="avatar.btn.clear">清空</button></div>
+                <div id="avatar-vts-hotkey-list" class="vts-item-list" aria-live="polite"></div>
+              </div>
+            </div>
+            <div id="avatar-vts-result" class="dialog-reply" role="status" aria-live="polite"></div>
+          </article>
+        </section>
+
+        <!-- P3 语音与 AI -->
+        <section data-panel="ai" aria-labelledby="ai-title">
+          <div class="section-subline"><p id="ai-title" data-i18n="panel.ai.sub">配置麦克风互动、语音识别、弹幕对话 AI 与桌宠说话；密钥使用 Windows 安全存储加密。</p></div>
+
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.voice">主播麦克风</small><h3 data-i18n="panel.ai.voice">主播语音</h3></div><div class="service-actions"><label class="compact-switch"><input name="voiceEnabled" type="checkbox"><i></i></label><button id="voice-test-open" class="secondary" type="button" data-i18n="btn.micTest">测试麦克风</button><span class="signal-light" id="voice-light" data-tone="off" title="麦克风状态"></span></div></header>
+            <div class="collapse-content" id="voice-detail">
+              <div class="inline-note"><small data-i18n="panel.ai.voice.d">语音识别会把主播说的话变成文字指令；开启后发发会聆听麦克风并做出大叫反应。</small></div>
+              <div class="field-grid two">
+                <label class="field"><span data-i18n="label.voiceDevice">麦克风</span><div class="select-with-action"><select name="voiceDeviceId"></select><button id="voice-refresh" class="secondary" type="button" data-i18n="btn.refreshDevices">刷新设备</button></div><small id="voice-device-note" data-i18n="label.voiceDevice.note">尚未读取麦克风设备。</small></label>
+                <label class="field"><span>按住说话按键</span><div class="push-to-talk-control"><button id="push-to-talk-key" class="secondary push-to-talk-key" type="button" aria-describedby="push-to-talk-help">F8</button><input name="voicePushToTalkKey" type="hidden"><output id="push-to-talk-status" role="status" aria-live="polite">按住 F8 开始识别</output></div><small id="push-to-talk-help">点击按键后按一个键。按住时识别，松开后发送；不需要先喊发发。</small></label>
+              </div>
+              <div class="field-grid two voice-range-grid">
+                <label class="field voice-range-field"><div class="slider-label-row"><span data-i18n="label.voiceThreshold">大叫阈值</span><output id="voice-threshold-output" class="range-output">35</output></div><input name="voiceThreshold" type="range" min="1" max="95" step="1" aria-describedby="voice-threshold-help"><div class="range-legend range-legend-numeric"><span>更容易触发</span><span>当前阈值</span><span>需要更大音量</span></div><small id="voice-threshold-help">数值越低越容易触发；实时音量请在「测试麦克风」中查看。</small></label>
+                <label class="field voice-range-field"><div class="slider-label-row"><span data-i18n="label.voiceSensitivity">灵敏度</span><output id="voice-sensitivity-output" class="range-output">1.0×</output></div><input name="voiceSensitivity" type="range" min="0.5" max="2" step="0.1"><div class="range-legend range-legend-numeric"><span>0.5× 稳妥</span><span>1.0× 标准</span><span>2.0× 灵敏</span></div><small data-i18n="label.voiceSensitivity.d">数值越大越容易触发反应</small></label>
+                <label class="field"><span data-i18n="label.voiceCooldown">反应冷却</span><input name="voiceReactionCooldownMs" type="number" min="500" step="100"><small data-i18n="label.voiceCooldown.d">毫秒，触发大叫后的冷却时间（≥500）</small></label>
+              </div>
+              <div class="option-group">
+                <small class="option-group-caption" data-i18n="group.interaction">互动方式</small>
+                <div class="toggle-stack toggle-stack-inline">
+                  <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.voiceWakeWordEnabled">语音唤醒词</b><small data-i18n="opt.voiceWakeWordEnabled.d">开启后需要先喊「发发」才处理语音指令与对话</small></span><label class="toggle-control"><input name="voiceWakeWordEnabled" type="checkbox"><i></i></label></div>
+                  <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.nameReact">弹幕喊名字反应</b><small data-i18n="opt.nameReact.d">弹幕里出现「发发」时回应，无需命令前缀</small></span><label class="toggle-control"><input name="nameReact" type="checkbox"><i></i></label></div>
+                  <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.applauseEnabled">掌声彩蛋</b><small data-i18n="opt.applauseEnabled.d">连续拍手鼓掌时发发会兴奋回应（实验功能）</small></span><label class="toggle-control"><input name="applauseEnabled" type="checkbox"><i></i></label></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.asr">语音识别</small><h3 data-i18n="panel.ai.asr">语音识别 ASR</h3></div><div class="service-actions"><label class="compact-switch"><input name="asrEnabled" type="checkbox"><i></i></label><button id="asr-test-dialog-open" class="secondary" type="button" data-i18n="btn.asrTest">连接测试</button><span class="signal-light" id="asr-light" data-tone="off" title="ASR 状态"></span></div></header>
+            <div class="collapse-content" id="asr-detail">
+              <div class="field-grid three">
+                <label class="field"><span data-i18n="label.asrPreset">服务预设</span><select name="asrPreset"></select><small data-i18n="label.asrPreset.d">选择预设自动填入地址与模型</small></label>
+                <label class="field"><span data-i18n="label.asrApiKey">API 密钥</span><input name="asrApiKey" type="password" autocomplete="new-password" placeholder="百炼预设与 TTS 共用，留空不修改"><small data-i18n="label.asrApiKey.d">Voicebox 本地服务可以留空。</small></label>
+                <label class="field"><span data-i18n="label.asrBaseUrl">接口地址</span><input name="asrBaseUrl"><small data-i18n="label.asrBaseUrl.d">实时语音转写服务的 WebSocket 地址</small><small class="voicebox-hint" data-voicebox-hint="asrBaseUrl" hidden>Voicebox 预设：填 http://127.0.0.1:17493</small></label>
+                <label class="field"><span data-i18n="label.asrModel">模型</span><div class="select-with-action"><select name="asrModel" id="asrModelSelect"></select><button id="asr-models-open" class="secondary" type="button" data-i18n="btn.asrModels">获取模型</button></div><small data-i18n="label.asrModel.d">预设自带模型列表，也可点击按钮从当前服务读取。</small></label>
+              </div>
+              <div class="inline-note"><small data-i18n="label.asrNote">与 TTS 共用百炼 Key；未开启时语音互动不会把声音转成文字。</small></div>
+            </div>
+          </article>
+
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.llm">弹幕对话</small><h3 data-i18n="panel.ai.llm">弹幕对话 AI</h3></div><div class="service-actions"><label class="compact-switch"><input name="llmEnabled" type="checkbox"><i></i></label><button id="llm-test-dialog-open" class="secondary" type="button" data-i18n="btn.llmTest">打开对话测试</button><span class="signal-light" id="llm-light" data-tone="off" title="AI 状态"></span></div></header>
+            <div class="collapse-content" id="llm-detail">
+              <div class="field-grid three">
+                <label class="field"><span data-i18n="label.llmPreset">服务预设</span><select name="llmPreset"></select><small data-i18n="label.llmPreset.d">选择预设自动填入地址与模型</small></label>
+                <label class="field"><span data-i18n="label.llmApiKey">API 密钥</span><input name="llmApiKey" type="password" autocomplete="new-password" placeholder="输入后点击「获取模型」会先保存 Key 再读取"><small data-i18n="label.llmApiKey.d">Voicebox 本地预设可留空；保存到 Windows 安全存储。</small></label>
+                <label class="field" id="llm-baseurl-field"><span data-i18n="label.llmBaseUrl">接口地址</span><input name="llmBaseUrl"><small class="voicebox-hint" data-voicebox-hint="llmBaseUrl" hidden>Voicebox 预设：填 http://127.0.0.1:17493</small></label>
+                <label class="field"><span data-i18n="label.llmModel">模型</span><div class="select-with-action"><select name="llmModel" id="llmModelSelect"></select><button id="llm-models-open" class="secondary" type="button" data-i18n="btn.llmModels">获取模型列表</button></div><small data-i18n="label.llmModel.d">输入 API Key 后点击按钮，返回的模型会直接变成可选项。</small></label>
+              </div>
+              <div class="field-grid two">
+                <label class="field"><span data-i18n="label.llmReasoning">推理等级</span><select name="llmReasoning"><option value="none" data-i18n="opt.reasoning.none">快速回复</option><option value="light" data-i18n="opt.reasoning.light">轻度推理</option><option value="deep" data-i18n="opt.reasoning.deep">深度推理</option></select><small data-i18n="label.llmReasoning.d">深度推理更聪明但更慢，需要支持推理的模型</small></label>
+                <label class="field"><span data-i18n="label.llmInputSource">AI 输入源</span><div class="radio-strip radio-strip-inline">
+                  <label class="radio-chip"><input type="radio" name="llmInputSource" value="voice"><span data-i18n="opt.inputSource.voice">仅语音转写</span></label>
+                  <label class="radio-chip"><input type="radio" name="llmInputSource" value="danmaku"><span data-i18n="opt.inputSource.danmaku">仅弹幕</span></label>
+                  <label class="radio-chip"><input type="radio" name="llmInputSource" value="all"><span data-i18n="opt.inputSource.all">全部</span></label>
+                </div><small data-i18n="label.llmInputSource.d">决定哪些内容会交给 AI 生成回复。</small></label>
+              </div>
+              <label class="field persona-field"><span data-i18n="label.llmPersona">形象提示词</span><textarea name="llmPersonaPrompt" rows="3" maxlength="200" data-i18n-placeholder="placeholder.llmPersona" placeholder="描述发发的性格、说话方式和边界"></textarea><small data-i18n="label.llmPersona.d">每次 AI 请求都会带入；最多 200 个字符。AI 输入和输出最多 40 个 Unicode 字符。</small></label>
+              <div class="inline-note"><small id="llm-memory-status" data-i18n="label.llmMemory">本地记忆：最多保存 400 条，只检索最相关的 3 条；模型未加载时不会联网下载。</small></div>
+            </div>
+          </article>
+
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.tts">语音合成</small><h3 data-i18n="panel.ai.tts">桌宠说话 TTS</h3></div><div class="service-actions"><label class="compact-switch"><input name="ttsEnabled" type="checkbox"><i></i></label><button id="tts-listen-open" class="secondary" type="button" data-i18n="btn.ttsListen">试听</button><span class="signal-light" id="tts-light" data-tone="off" title="TTS 状态"></span></div></header>
+            <div class="collapse-content" id="tts-detail">
+              <div class="field-grid three">
+                <label class="field"><span data-i18n="label.ttsPreset">服务预设</span><select name="ttsPreset"></select><small data-i18n="label.ttsPreset.d">Edge TTS 免 Key；百炼需要 Key；Voicebox 需要本地服务。</small></label>
+                <label class="field"><span data-i18n="label.ttsApiKey">API 密钥</span><input name="ttsApiKey" type="password" autocomplete="new-password" placeholder="Edge TTS 留空；输入后点击按钮会先保存"><small data-i18n="label.ttsApiKey.d">密钥写入 Windows 安全存储。</small></label>
+                <label class="field"><span data-i18n="label.ttsBaseUrl">接口地址</span><input name="ttsBaseUrl"><small class="voicebox-hint" data-voicebox-hint="ttsBaseUrl" hidden>Voicebox 预设：填 http://127.0.0.1:17493</small></label>
+                <label class="field"><span data-i18n="label.ttsModel">模型</span><div class="select-with-action"><select name="ttsModel" id="ttsModelSelect"></select><button id="tts-models-open" class="secondary" type="button" data-i18n="btn.ttsModels">获取模型</button></div><small data-i18n="label.ttsModel.d">Edge TTS 固定为 edge-tts；百炼与 Voicebox 可读取模型。</small></label>
+                <label class="field"><span data-i18n="label.ttsVoice">音色</span><div class="select-with-action"><select name="ttsVoice" id="ttsVoiceSelect"></select><button id="tts-voices-open" class="secondary" type="button" data-i18n="btn.ttsVoices">读取音色列表</button></div><small data-i18n="label.ttsVoice.d">未列出时可选择「自定义音色」手动填写</small><small class="voicebox-hint" data-voicebox-hint="ttsVoice" hidden>Voicebox 预设：这里填 Voicebox 的 Profile ID</small><small class="aliyun-hint" data-aliyun-hint="ttsVoice" hidden>百炼预设：在百炼控制台「声音复刻」创建音色后，把音色名填到这里</small></label>
+                <label class="field" id="tts-voice-custom-field" hidden><span data-i18n="label.ttsVoiceCustom">自定义音色</span><input name="ttsVoiceCustom" placeholder="填写音色 ID"></label>
+              </div>
+              <div class="field-grid two">
+                <label class="field"><span data-i18n="label.ttsReplyScope">TTS 回复范围</span><div class="radio-strip radio-strip-inline">
+                  <label class="radio-chip"><input type="radio" name="ttsReplyScope" value="voice"><span data-i18n="opt.scope.voice">仅回复语音</span></label>
+                  <label class="radio-chip"><input type="radio" name="ttsReplyScope" value="danmaku"><span data-i18n="opt.scope.danmaku">仅回复弹幕</span></label>
+                  <label class="radio-chip"><input type="radio" name="ttsReplyScope" value="all"><span data-i18n="opt.scope.all">全部</span></label>
+                  <label class="radio-chip"><input type="radio" name="ttsReplyScope" value="off"><span data-i18n="opt.scope.off">关闭</span></label>
+                </div></label>
+                <label class="field"><span data-i18n="label.ttsSpeed">语速</span><div class="slider-with-output"><input name="ttsSpeed" type="range" min="0.5" max="1.5" step="0.1"><output id="tts-speed-output" class="range-output">x1.0</output></div><small data-i18n="label.ttsSpeed.d">越往右语速越快，1.0 为正常语速</small></label>
+              </div>
+              <div class="tts-voice-import" id="tts-voice-import">
+                <div class="tts-voice-import-title"><b data-i18n="label.ttsVoiceImport">导入自定义音色</b><small data-i18n="label.ttsVoiceImport.d">导入音频文件作为声音参考，适用于支持声音克隆的服务（如 Voicebox）</small></div>
+                <div id="tts-voice-drop-zone" class="tts-voice-drop-zone">
+                  <b data-i18n="label.ttsVoiceDrop">把音频文件拖到这里</b>
+                  <span data-i18n="label.ttsVoiceDrop.d">支持 .wav / .mp3 / .ogg / .flac / .webm 格式</span>
+                  <button id="tts-voice-import-open" class="secondary" type="button" data-i18n="btn.ttsVoiceImport">选择文件</button>
+                </div>
+                <div id="tts-voice-import-status" class="inline-note" hidden><small></small></div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- P4 关系与成长 -->
+        <section data-panel="relationship" aria-labelledby="relationship-title">
+          <div class="section-subline"><p id="relationship-title" data-i18n="panel.relationship.sub">与发发的关系进度、每日互动和短期情绪。</p></div>
+          <div id="relationship-status" class="relationship-grid" aria-live="polite"></div>
+          <div class="inline-note"><small data-i18n="label.relationship.note">所有关系数据仅保存在本机，不会上传到网络。</small></div>
+          <div class="utility-row">
+            <button id="reset-relationship" class="secondary utility-button danger" type="button" data-i18n="btn.resetRelationship">重置关系</button>
+          </div>
+        </section>
+
+        <!-- P5 定时与指令 -->
+        <section data-panel="schedule" aria-labelledby="schedule-title">
+          <div class="section-subline"><p id="schedule-title" data-i18n="panel.schedule.sub">整点报时、自定义提醒，以及直播间弹幕指令编排；改动自动保存。</p></div>
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.reminders">定时播报</small><h3 data-i18n="panel.schedule.reminders">定时播报</h3></div></header>
+            <div class="toggle-stack toggle-stack-inline">
+              <div class="toggle-row"><span class="toggle-copy"><b data-i18n="opt.hourlyChime">整点报时</b><small data-i18n="opt.hourlyChime.d">每到整点用报时动作提示时间（勿扰时段自动安静）</small></span><label class="toggle-control"><input name="hourlyChime" type="checkbox"><i></i></label></div>
+            </div>
+            <div class="command-head reminder-head"><span data-i18n="col.time">时间</span><span data-i18n="col.lines">台词</span><span data-i18n="col.action">动作</span><span></span></div>
+            <div id="reminder-list" class="command-list"></div>
+            <button id="add-reminder" class="secondary utility-button" type="button" data-i18n="btn.addReminder">＋ 添加提醒</button>
+          </article>
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.commands">指令编排</small><h3 data-i18n="panel.schedule.commands">指令编排</h3></div><button id="add-command" class="secondary" type="button" data-i18n="btn.addCommand">＋ 添加指令</button></header>
+            <div class="command-head command-head-5"><span data-i18n="col.aliases">触发别名</span><span data-i18n="col.action">动作 ID</span><span data-i18n="col.reply">回复台词</span><span data-i18n="col.priority">优先级</span><span></span></div>
+            <div id="command-list" class="command-list"></div>
+          </article>
+        </section>
+
+        <!-- P6 动作分配 -->
+        <section data-panel="assign" aria-labelledby="assign-title">
+          <div class="section-subline"><p id="assign-title" data-i18n="panel.assign.sub">按场景分配动作：每个场景可以勾选多个动作，触发时会随机播放一个。改动自动保存。</p></div>
+          <div class="assign-grid">
+            <article class="service-panel assign-card">
+              <header><div><small>待机场景</small><h3 data-i18n="label.assign.idle">待机动作</h3></div><div class="service-actions"><button id="assign-idle-all" type="button">全选</button><button id="assign-idle-none" type="button">清空</button></div></header>
+              <p class="section-desc">发发空闲时随机播放的动作；不勾选任何一项则使用默认组合。</p>
+              <div id="assign-idle" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>点击场景</small><h3 data-i18n="label.assign.click">点击互动</h3></div><div class="service-actions"><button id="assign-click-all" type="button">全选</button><button id="assign-click-none" type="button">清空</button></div></header>
+              <p class="section-desc">单击桌宠身体（非抚摸、非拖动）时随机播放的动作。</p>
+              <div id="assign-click" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>头部互动</small><h3 data-i18n="label.assign.petting">头部抚摸</h3></div><div class="service-actions"><button id="assign-petting-all" type="button">全选</button><button id="assign-petting-none" type="button">清空</button></div></header>
+              <p class="section-desc">在头顶左右来回抚摸并触发开心反馈时随机播放的动作。</p>
+              <div id="assign-petting" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>肚子互动</small><h3 data-i18n="label.assign.belly">摸肚子</h3></div><div class="service-actions"><button id="assign-belly-all" type="button">全选</button><button id="assign-belly-none" type="button">清空</button></div></header>
+              <p class="section-desc">在肚子区域来回抚摸触发害羞反馈时随机播放的动作。</p>
+              <div id="assign-belly" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>弹幕互动</small><h3 data-i18n="label.assign.danmaku">弹幕喊名字</h3></div><div class="service-actions"><button id="assign-danmaku-all" type="button">全选</button><button id="assign-danmaku-none" type="button">清空</button></div></header>
+              <p class="section-desc">弹幕里出现「发发」但没有匹配到指令时，随机播放一个动作回应。</p>
+              <div id="assign-danmaku" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>主播语音</small><h3 data-i18n="label.assign.voice">主播语音</h3></div><div class="service-actions"><button id="assign-voice-all" type="button">全选</button><button id="assign-voice-none" type="button">清空</button></div></header>
+              <p class="section-desc">主播说话转成文字、且不是指令时，随机播放一个动作并说出 AI 回复。</p>
+              <div id="assign-voice" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>大叫反应</small><h3 data-i18n="label.assign.voiceShout">主播大叫</h3></div><div class="service-actions"><button id="assign-voiceShout-all" type="button">全选</button><button id="assign-voiceShout-none" type="button">清空</button></div></header>
+              <p class="section-desc">麦克风音量超过阈值触发大叫反应时随机播放的动作。</p>
+              <div id="assign-voiceShout" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>噪声反应</small><h3 data-i18n="label.assign.voiceNoisy">持续噪声</h3></div><div class="service-actions"><button id="assign-voiceNoisy-all" type="button">全选</button><button id="assign-voiceNoisy-none" type="button">清空</button></div></header>
+              <p class="section-desc">持续噪声触发捂耳朵保护反应时随机播放的动作。</p>
+              <div id="assign-voiceNoisy" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>特殊事件</small><h3 data-i18n="label.assign.special">特殊事件</h3></div><div class="service-actions"><button id="assign-special-all" type="button">全选</button><button id="assign-special-none" type="button">清空</button></div></header>
+              <p class="section-desc">整点报时、关系升级等特殊时刻随机播放的动作。</p>
+              <div id="assign-special" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>抽奖互动</small><h3 data-i18n="label.assign.lottery">抽奖反馈</h3></div><div class="service-actions"><button id="assign-lottery-all" type="button">全选</button><button id="assign-lottery-none" type="button">清空</button></div></header>
+              <p class="section-desc">观众加入抽奖或主播开奖时随机播放的动作。</p>
+              <div id="assign-lottery" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>观众进场</small><h3 data-i18n="label.assign.enter">观众进场</h3></div><div class="service-actions"><button id="assign-enter-all" type="button">全选</button><button id="assign-enter-none" type="button">清空</button></div></header>
+              <p class="section-desc">默认只通知不播动作；勾选后观众进场会播放低优先级欢迎动作。</p>
+              <div id="assign-enter" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>直播总结</small><h3 data-i18n="label.assign.session">直播结束总结</h3></div><div class="service-actions"><button id="assign-session-all" type="button">全选</button><button id="assign-session-none" type="button">清空</button></div></header>
+              <p class="section-desc">直播连接结束时播报本场数据总结时随机播放的动作。</p>
+              <div id="assign-session" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>礼物互动</small><h3 data-i18n="label.assign.gift">礼物反馈</h3></div><div class="service-actions"><button id="assign-gift-all" type="button">全选</button><button id="assign-gift-none" type="button">清空</button></div></header>
+              <p class="section-desc">普通礼物随机播放的动作；不勾选则继续按礼物价值使用默认反馈。</p>
+              <div id="assign-gift" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>中等礼物</small><h3 data-i18n="label.assign.giftMedium">中等礼物</h3></div><div class="service-actions"><button id="assign-giftMedium-all" type="button">全选</button><button id="assign-giftMedium-none" type="button">清空</button></div></header>
+              <p class="section-desc">1 万瓜子以上的中等礼物随机播放的动作。</p>
+              <div id="assign-giftMedium" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>大额礼物</small><h3 data-i18n="label.assign.giftBig">大额礼物</h3></div><div class="service-actions"><button id="assign-giftBig-all" type="button">全选</button><button id="assign-giftBig-none" type="button">清空</button></div></header>
+              <p class="section-desc">10 万瓜子以上的大额礼物随机播放的动作。</p>
+              <div id="assign-giftBig" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>豪华礼物</small><h3 data-i18n="label.assign.giftSuper">豪华礼物</h3></div><div class="service-actions"><button id="assign-giftSuper-all" type="button">全选</button><button id="assign-giftSuper-none" type="button">清空</button></div></header>
+              <p class="section-desc">100 万瓜子以上的豪华礼物随机播放的动作。</p>
+              <div id="assign-giftSuper" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>醒目留言</small><h3 data-i18n="label.assign.superChat">SC 回应</h3></div><div class="service-actions"><button id="assign-superChat-all" type="button">全选</button><button id="assign-superChat-none" type="button">清空</button></div></header>
+              <p class="section-desc">收到 Super Chat 留言时随机播放的动作。</p>
+              <div id="assign-superChat" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>上舰庆祝</small><h3 data-i18n="label.assign.guard">上舰庆祝</h3></div><div class="service-actions"><button id="assign-guard-all" type="button">全选</button><button id="assign-guard-none" type="button">清空</button></div></header>
+              <p class="section-desc">观众上舰时随机播放的庆祝动作。</p>
+              <div id="assign-guard" class="idle-action-list"></div>
+            </article>
+            <article class="service-panel assign-card">
+              <header><div><small>甩飞反馈</small><h3 data-i18n="label.assign.toss">甩飞腾空</h3></div><div class="service-actions"><button id="assign-toss-all" type="button">全选</button><button id="assign-toss-none" type="button">清空</button></div></header>
+              <p class="section-desc">快速拖动松手后角色飞出时随机播放的动作（默认使用物理表情图）。</p>
+              <div id="assign-toss" class="idle-action-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- P7 动作设计预览 -->
+        <section data-panel="actions" aria-labelledby="actions-title">
+          <div class="section-subline"><p id="actions-title" data-i18n="panel.actions.sub">点击任意动作立即试播，不会进入普通动作排队。</p></div>
+          <article class="service-panel">
+            <header><div><small data-i18n="label.small.actionGrid">动作库</small><h3 data-i18n="panel.actions.grid">动作预览</h3></div><button id="stop-action" class="secondary" type="button" data-i18n="btn.stopAction">停止并待机</button></header>
+            <div id="action-test-grid" class="action-test-grid" aria-live="polite"></div>
+          </article>
+          <article class="service-panel custom-action-test">
+            <header><div><small data-i18n="label.small.customAction">自定义测试</small><h3 data-i18n="panel.actions.custom">自定义动作测试</h3></div></header>
+            <p class="section-desc" data-i18n="panel.actions.custom.d">选择任意动作并填上桌宠要说的台词，立即试播（用于测试指令表中配置的动作）。</p>
+            <div class="field-grid two">
+              <label class="field"><span data-i18n="label.customActionId">动作</span><select id="custom-action-id"></select></label>
+              <label class="field"><span data-i18n="label.customActionText">测试台词</span><input id="custom-action-text" value="这是自定义动作测试。"></label>
+            </div>
+            <button id="run-custom-action" class="primary" type="button" data-i18n="btn.play">播放</button>
+          </article>
+        </section>
+
+        <!-- P7 运行诊断 -->
+        <section data-panel="diagnostics" aria-labelledby="diagnostics-title">
+          <div class="section-subline"><p id="diagnostics-title" data-i18n="panel.diagnostics.sub">各服务状态会实时更新。</p></div>
+          <div id="diagnostics" class="diagnostics" aria-live="polite"></div>
+        </section>
+
+        <!-- P8 测试中心 -->
+        <section data-panel="testcenter" aria-labelledby="testcenter-title">
+          <div class="section-subline"><p id="testcenter-title" data-i18n="panel.testcenter.sub">模拟主播语音与观众弹幕，逐项测试指令、AI 对话与点歌；无需真实直播间。</p></div>
+
+          <article class="service-panel test-voice-panel">
+            <header>
+              <div><small>主播语音测试</small><h3 data-i18n="panel.testcenter.voice">主播语音测试</h3></div>
+              <div class="service-actions"><label class="compact-switch-row"><input name="ttsEnabledQuick" type="checkbox"><i></i><span data-i18n="panel.testcenter.speak">桌宠播报</span></label><button id="voice-test-collapse" class="secondary panel-disclosure" type="button" aria-expanded="true" aria-controls="voice-test-detail">收起</button></div>
+            </header>
+            <div id="voice-test-detail" class="panel-disclosure-content">
+              <div class="test-center-copy"><b>真实语音链路测试</b><p>直接开麦后，会依次显示语音识别结果、AI 回复和桌宠实际准备播报的内容；也可在下方输入文字模拟同一条链路。</p></div>
+              <div class="mock-form test-inputs">
+                <label class="field"><span data-i18n="panel.testcenter.voice.input">说话内容</span><div class="input-with-action"><input id="voice-test-input" maxlength="40" placeholder="例如：跳舞 / 点歌 晴天 / 今天心情怎么样"><button id="voice-test-send" class="secondary" type="button">模拟说话</button></div></label>
+              </div>
+              <div class="mock-actions"><button id="voice-test-mic-open" class="primary" type="button">开始真实麦克风测试</button><span id="voice-test-mic-state" class="inline-note" role="status"></span></div>
+              <div class="voice-pipeline" aria-live="polite">
+                <div><small>语音识别</small><output id="voice-pipeline-asr">等待开麦</output></div>
+                <div><small>AI 回复 / 指令结果</small><output id="voice-pipeline-ai">等待语音转写</output></div>
+                <div><small>桌宠播报</small><output id="voice-pipeline-tts">等待 AI 或指令结果</output></div>
+              </div>
+              <div id="voice-sim-result" class="dialog-reply" role="status" aria-live="polite"></div>
+            </div>
+          </article>
+
+          <article class="service-panel">
+            <header><div><small>观众弹幕测试</small><h3 data-i18n="panel.testcenter.danmaku">观众弹幕测试</h3></div><div class="service-actions"><label class="compact-switch-row"><input name="liveMock" type="checkbox"><i></i><span data-i18n="opt.liveMock">模拟测试模式</span></label></div></header>
+            <div class="test-center-copy"><b data-i18n="opt.liveMock">模拟测试模式</b><p data-i18n="opt.liveMock.d">不用连直播间，在这里测试所有互动（弹幕、礼物、SC、上舰）。</p></div>
+            <div id="test-center-quick" class="quick-enable-strip" hidden></div>
+            <div class="mock-form test-inputs">
+              <label class="field"><span data-i18n="label.mockDanmaku">弹幕输入</span><div class="input-with-action"><input id="mock-danmaku-input" placeholder="例如：发发 跳舞（发发和指令之间空格随意）"><button id="mock-send-danmaku" class="secondary" type="button" data-i18n="btn.send">发送</button></div></label>
+            </div>
+            <div class="mock-actions">
+              <button type="button" data-mock="gift" data-i18n="btn.mockGift">礼物</button>
+              <button type="button" data-mock="superChat" data-i18n="btn.mockSC">SC</button>
+              <button type="button" data-mock="guard" data-i18n="btn.mockGuard">上舰</button>
+              <button type="button" data-mock="enter" data-i18n="btn.mockEnter">进场</button>
+            </div>
+            <div class="command-catalog-head"><label class="field"><span data-i18n="label.commandSearch">指令目录搜索</span><input id="test-command-search" data-i18n-placeholder="placeholder.commandSearch" placeholder="搜索指令或别名"></label><div class="catalog-pages"><button id="test-command-prev" class="secondary" type="button" data-i18n="btn.prev">上一页</button><span id="test-command-page">1 / 1</span><button id="test-command-next" class="secondary" type="button" data-i18n="btn.next">下一页</button></div></div>
+            <div id="test-command-catalog" class="command-catalog" aria-live="polite"></div>
+          </article>
+
+          <article class="service-panel unavailable-panel">
+            <header><div><small>点歌测试</small><h3>点歌功能</h3></div><span class="unavailable-status">暂未开发</span></header>
+            <p>该功能尚未开放，因此测试中心不会发送点歌或音量请求。</p>
+          </article>
+        </section>
+      </form>
+
+      <div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+
+      <dialog id="llm-test-dialog" class="test-dialog">
+        <form method="dialog" class="dialog-form">
+          <header class="dialog-head"><div><small>对话测试</small><h3 data-i18n="dlg.llm">对话测试</h3></div><button class="dialog-close" value="cancel" aria-label="关闭" data-i18n="dlg.closeAria">×</button></header>
+          <p class="dialog-hint" data-i18n="dlg.llm.d">输入一句话，发发会调用当前 AI 服务生成回复。</p>
+          <textarea id="llm-test-input" rows="3" maxlength="40" placeholder="例如：发发，你今天心情怎么样？"></textarea>
+          <div class="dialog-actions"><button id="llm-test-send" class="primary" type="button" data-i18n="dlg.send">发送</button></div>
+          <div id="llm-test-reply" class="dialog-reply" aria-live="polite"></div>
+        </form>
+      </dialog>
+      <dialog id="tts-listen-dialog" class="test-dialog">
+        <form method="dialog" class="dialog-form">
+          <header class="dialog-head"><div><small>语音试听</small><h3 data-i18n="dlg.tts">试听语音合成</h3></div><button class="dialog-close" value="cancel" aria-label="关闭" data-i18n="dlg.closeAria">×</button></header>
+          <p class="dialog-hint" data-i18n="dlg.tts.d">输入要合成的台词并试听当前 TTS 服务。</p>
+          <textarea id="tts-listen-input" rows="3" placeholder="例如：你好呀，我是发发～"></textarea>
+          <div class="dialog-actions"><button id="tts-listen-play" class="primary" type="button" data-i18n="dlg.play">合成并播放</button></div>
+          <div id="tts-listen-result" class="dialog-reply" aria-live="polite"></div>
+        </form>
+      </dialog>
+      <dialog id="asr-test-dialog" class="test-dialog">
+        <form method="dialog" class="dialog-form">
+          <header class="dialog-head"><div><small>语音识别连接</small><h3 data-i18n="dlg.asr">语音识别连接测试</h3></div><button class="dialog-close" value="cancel" aria-label="关闭" data-i18n="dlg.closeAria">×</button></header>
+          <p class="dialog-hint" data-i18n="dlg.asr.d">检测当前 ASR 服务的连通性与密钥配置。</p>
+          <div id="asr-test-result" class="dialog-reply" aria-live="polite"></div>
+        </form>
+      </dialog>
+      <dialog id="reset-relationship-dialog" class="test-dialog">
+        <form method="dialog" class="dialog-form">
+          <header class="dialog-head"><div><small>重置关系</small><h3 data-i18n="dlg.resetRelationship">重置关系</h3></div><button class="dialog-close" value="cancel" aria-label="关闭" data-i18n="dlg.closeAria">×</button></header>
+          <p class="dialog-hint" data-i18n="dlg.resetRelationship.d">重置后亲密度、今日互动、关系阶段和短期情绪都会清零，无法恢复。确定要重置吗？</p>
+          <div class="dialog-actions"><button id="reset-relationship-confirm" class="primary danger-solid" type="button" value="confirm" data-i18n="dlg.confirmReset">确认重置</button><button class="secondary" value="cancel" data-i18n="dlg.cancel">取消</button></div>
+        </form>
+      </dialog>
+      <dialog id="voice-test-dialog" class="test-dialog">
+        <form method="dialog" class="dialog-form">
+          <header class="dialog-head"><div><small>麦克风音量</small><h3 data-i18n="dlg.mic">麦克风测试</h3></div><button class="dialog-close" value="cancel" aria-label="关闭" data-i18n="dlg.closeAria">×</button></header>
+          <p class="dialog-hint" data-i18n="dlg.mic.d">对着麦克风说话，观察实时音量；语音识别、AI 回复和桌宠播报内容会在下方实时显示。</p>
+          <div class="meter"><div id="voice-level-meter" class="meter-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+          <div class="meter-caption"><span data-i18n="dlg.quiet">安静</span><output id="voice-level-value">0</output><span data-i18n="dlg.loud">响亮</span></div>
+          <div class="voice-pipeline voice-pipeline-dialog" aria-live="polite">
+            <div><small>语音识别</small><output id="voice-pipeline-asr-dialog">等待开麦</output></div>
+            <div><small>AI 回复 / 指令结果</small><output id="voice-pipeline-ai-dialog">等待语音转写</output></div>
+            <div><small>桌宠播报</small><output id="voice-pipeline-tts-dialog">等待 AI 或指令结果</output></div>
+          </div>
+          <div class="dialog-actions"><button id="voice-shout-sim" class="primary" type="button" data-i18n="dlg.simShout">模拟大叫</button></div>
+          <div id="voice-test-result" class="dialog-reply" aria-live="polite"></div>
+        </form>
+      </dialog>
+      <dialog id="live-guide-dialog" class="test-dialog guide-dialog">
+        <div class="dialog-form">
+          <header class="dialog-head"><div><small>直播配置说明</small><h3>如何找到房间号与主播 UID</h3></div><button class="dialog-close" id="live-guide-close" type="button" aria-label="关闭">×</button></header>
+          <div class="stepper-dots" id="live-guide-dots" role="tablist" aria-label="步骤"></div>
+          <div class="guide-steps" id="live-guide-steps"></div>
+          <div class="stepper-nav">
+            <button class="secondary" id="live-guide-prev" type="button">上一步</button>
+            <span class="stepper-count" id="live-guide-count">1 / 5</span>
+            <button class="primary" id="live-guide-next" type="button">下一步</button>
+          </div>
+        </div>
+      </dialog>
+      <dialog id="music-guide-dialog" class="test-dialog guide-dialog">
+        <div class="dialog-form">
+          <header class="dialog-head"><div><small>点歌配置说明</small><h3>如何接入点歌机器人</h3></div><button class="dialog-close" id="music-guide-close" type="button" aria-label="关闭">×</button></header>
+          <div class="stepper-dots" id="music-guide-dots" role="tablist" aria-label="步骤"></div>
+          <div class="guide-steps" id="music-guide-steps"></div>
+          <div class="stepper-nav">
+            <button class="secondary" id="music-guide-prev" type="button">上一步</button>
+            <span class="stepper-count" id="music-guide-count">1 / 5</span>
+            <button class="primary" id="music-guide-next" type="button">下一步</button>
+          </div>
+        </div>
+      </dialog>
+      <dialog id="config-prompt-dialog" class="test-dialog">
+        <form method="dialog" class="dialog-form">
+          <header class="dialog-head"><div><small>需要配置</small><h3>服务尚未配置</h3></div><button class="dialog-close" value="cancel" aria-label="关闭">×</button></header>
+          <p id="config-prompt-text" class="dialog-hint"></p>
+          <div class="dialog-actions">
+            <button id="config-prompt-yes" class="primary" type="button">去配置</button>
+            <button class="secondary" value="cancel">先不用</button>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="avatar-unavailable-dialog" class="test-dialog avatar-unavailable-dialog" aria-labelledby="avatar-unavailable-title">
+        <form method="dialog" class="dialog-form">
+          <header class="dialog-head"><div><small>形象模式</small><h3 id="avatar-unavailable-title">暂未完成</h3></div><button class="dialog-close" value="cancel" aria-label="关闭">×</button></header>
+          <p class="dialog-hint">Live2D 与 VTube Studio 接入正在开发中，当前仅支持视频动作模式。你的模型与接口参数会保留，不会被删除。</p>
+          <div class="dialog-actions"><button class="secondary" value="cancel">知道了</button></div>
+        </form>
+      </dialog>
+      <dialog id="service-config-dialog" class="test-dialog">
+        <form method="dialog" class="dialog-form" id="service-config-form">
+          <header class="dialog-head"><div><small id="service-config-kicker">服务配置</small><h3 id="service-config-title">配置服务</h3></div><button class="dialog-close" value="cancel" aria-label="关闭">×</button></header>
+          <div class="field-grid two" id="service-config-fields">
+            <label class="field"><span>服务预设</span><select id="service-config-preset"></select></label>
+            <label class="field" id="service-config-baseurl-wrap"><span class="field-label">接口地址</span><input id="service-config-baseurl"><small class="voicebox-hint" data-voicebox-hint="dialogBaseUrl" hidden>Voicebox：填 http://127.0.0.1:17493</small></label>
+            <label class="field" id="service-config-model-wrap"><span class="field-label">模型</span><input id="service-config-model"></label>
+            <label class="field" id="service-config-voice-wrap" hidden><span>音色</span><input id="service-config-voice"><small class="voicebox-hint" data-voicebox-hint="dialogVoice" hidden>Voicebox：填 Profile ID</small></label>
+            <label class="field" style="grid-column:1 / -1"><span>API 密钥</span><input id="service-config-key" type="password" autocomplete="new-password" placeholder="留空表示不修改"></label>
+          </div>
+          <p class="dialog-hint">密钥使用 Windows 安全存储加密保存；保存后会自动重试刚才的测试。</p>
+          <div class="dialog-actions">
+            <button id="service-config-save" class="primary" type="button">保存并重试</button>
+            <button class="secondary" value="cancel">取消</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+  </div>
+  <script type="module" src="/src/renderer/settings.js"></script>
+</body>
+</html>

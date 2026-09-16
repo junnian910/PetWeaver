@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>直播悬浮组件</title><link rel="stylesheet" href="/src/renderer/live-widget.css"><link rel="stylesheet" href="/src/renderer/live-widget-v026.css"></head>
+<body>
+  <div class="widget" role="region" aria-label="直播悬浮组件">
+    <header class="widget-head">
+      <span class="dot" id="status-dot" aria-hidden="true"></span>
+      <h1 class="widget-title">直播悬浮组件</h1>
+      <button class="widget-merge" id="widget-merge" type="button" hidden aria-label="合并到直播悬浮组件" title="合并到直播悬浮组件"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5H5v3M5 5l5 5M16 19h3v-3m0 3-5-5M8 19H5v-3m0 3 5-5M16 5h3v3m0-3-5 5"/></svg></button>
+      <button class="widget-close" id="widget-close" aria-label="关闭悬浮组件" title="关闭">×</button>
+    </header>
+    <div class="widget-meta" id="widget-meta">未连接直播间</div>
+    <section class="widget-state" id="widget-state" aria-live="polite">
+      <span class="widget-state-kicker" id="widget-state-kicker">直播互动</span>
+      <h2 id="widget-state-title">连接直播间后，实时互动会显示在这里</h2>
+      <p id="widget-state-description">完成直播连接后，发发会展示弹幕、AI 回答与触发动作。</p>
+      <div class="widget-state-actions">
+        <button class="widget-state-action" id="widget-state-action" type="button">打开直播设置</button>
+        <button class="widget-state-preview" id="widget-state-preview" type="button">预览互动效果</button>
+      </div>
+    </section>
+    <div class="widget-grid">
+      <section class="widget-column" data-widget-panel="live" aria-labelledby="live-feed-title">
+        <header class="column-head"><h2 id="live-feed-title">直播事件</h2><span id="live-count">0</span></header>
+        <ul class="feed" id="live-feed" aria-live="polite"></ul>
+      </section>
+      <section class="widget-column" data-widget-panel="ai" aria-labelledby="ai-feed-title">
+        <header class="column-head"><h2 id="ai-feed-title">AI 回答</h2><span id="ai-count">0</span></header>
+        <ul class="feed" id="ai-feed" aria-live="polite"></ul>
+      </section>
+      <section class="widget-column" data-widget-panel="action" aria-labelledby="action-feed-title">
+        <header class="column-head"><h2 id="action-feed-title">触发动作</h2><span id="action-count">0</span></header>
+        <ul class="feed" id="action-feed" aria-live="polite"></ul>
+      </section>
+      <aside class="relationship-rail" data-widget-panel="relationship" aria-labelledby="relationship-title">
+        <span class="rail-kicker" id="relationship-title">亲密度</span>
+        <strong id="intimacy-stage">初见</strong>
+        <output id="intimacy-value">0</output>
+        <div class="intimacy-meter" aria-hidden="true"><span id="intimacy-fill"></span></div>
+        <span class="rail-caption">总值 / 1000</span>
+        <p id="relationship-note">等待互动</p>
+      </aside>
+    </div>
+    <footer class="widget-foot" id="widget-foot">— 等待事件 —</footer>
+  </div>
+  <script type="module" src="/src/renderer/live-widget.js"></script>
+</body>
+</html>

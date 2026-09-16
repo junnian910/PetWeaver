@@ -1,0 +1,37 @@
+@import "./ui-theme.css";
+
+#bubble {
+    @apply rounded-2xl border border-fafa-border bg-fafa-surface px-4 py-3 text-sm font-semibold leading-6 text-fafa-ink shadow-fafa-float;
+  }
+  #listening-bubble {
+    @apply pointer-events-none absolute z-[4] rounded-2xl border border-fafa-brand/25 bg-fafa-brand-soft px-4 py-2 text-sm font-semibold leading-6 text-fafa-brand-strong shadow-fafa-float;
+    bottom: var(--bubble-bottom, 240px);
+    left: 50%;
+    max-width: var(--bubble-width, 280px);
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(.96);
+    transition: bottom .2s ease, opacity .18s ease, transform .18s ease;
+  }
+  #listening-bubble::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    width: 12px;
+    height: 12px;
+    border-right: 1px solid color-mix(in srgb, var(--color-fafa-brand) 28%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-fafa-brand) 28%, transparent);
+    background: inherit;
+    transform: translateX(-50%) rotate(45deg);
+  }
+  #listening-bubble.visible { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  #bubble.visible ~ #listening-bubble.visible { bottom: calc(var(--bubble-bottom, 240px) + 64px); }
+  #stage.docked #listening-bubble { display: none; }
+  #bubble::after {
+    border-right-color: var(--color-fafa-border);
+    border-bottom-color: var(--color-fafa-border);
+  }
+  #startup-error {
+    @apply rounded-2xl border-fafa-danger bg-fafa-surface px-4 py-3 text-sm text-fafa-ink shadow-fafa-float;
+  }
+#startup-error span { @apply text-xs text-fafa-muted; }

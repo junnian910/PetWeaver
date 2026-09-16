@@ -1,0 +1,416 @@
+﻿[
+    {
+        "file":  "public/assets/videos/actions/act_chin.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_dance.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_firework.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_flip_hair.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_hop.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_ink.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_intro.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_joke.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_lookaround.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_roll.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_rub_eye.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_scratch.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_sneeze.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_spin.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_stretch.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_table.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_work.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/act_yawn.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_aggrieved.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_angry.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_excited.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_happy.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_sad.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_shy.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_sleepy.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/emo_surprise.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/gift_guard.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/gift_sc.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/gift_thanks.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/idle_blink.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/idle_stare.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/special_hourly.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/special_lottery.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/state_move.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/state_observe.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/state_talking.webm",
+        "codec":  null,
+        "size":  "x",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  null,
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/actions/waving-real.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/failed.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/idle.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/jumping.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/singing.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/sleeping.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/waiting.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/waking.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/waving.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    },
+    {
+        "file":  "public/assets/videos/waving-real.webm",
+        "codec":  "vp9",
+        "size":  "384x416",
+        "fps":  0,
+        "dur":  0,
+        "alpha":  "1",
+        "frames":  0
+    }
+]

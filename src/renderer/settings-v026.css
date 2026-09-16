@@ -1,0 +1,367 @@
+@import "./ui-theme.css";
+
+body {
+    @apply min-h-dvh bg-fafa-canvas text-fafa-ink antialiased;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .skip-link { @apply rounded-lg bg-fafa-ink px-3 py-2 text-sm font-semibold text-fafa-surface; }
+
+  .app-shell {
+    @apply grid min-h-dvh bg-fafa-canvas;
+    grid-template-columns: 248px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    @apply fixed inset-y-0 left-0 z-10 flex min-w-0 w-[248px] flex-col overflow-hidden border-r border-fafa-border bg-fafa-surface px-3 py-5 text-fafa-ink shadow-none;
+  }
+  .sidebar::before { display: none; }
+  .brand { @apply mx-2 mb-5 flex items-center gap-3; }
+  .brand-mark {
+    @apply grid size-10 place-items-center rounded-xl bg-fafa-brand text-[13px] font-extrabold tracking-tight text-white shadow-sm;
+  }
+  .brand b { @apply text-[15px] font-bold tracking-[-0.01em] text-fafa-ink; }
+  .pet-preview {
+    @apply mx-2 mb-5 h-[132px] overflow-hidden rounded-2xl border border-fafa-border bg-fafa-surface-muted;
+  }
+  .pet-preview::after { background: linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--color-fafa-ink) 8%, transparent)); }
+  .pet-preview img { width: 126px; top: 5px; filter: drop-shadow(0 10px 14px rgb(37 30 35 / 0.16)); }
+  .preview-halo { width: 96px; height: 96px; top: 18px; border-color: color-mix(in srgb, var(--color-fafa-brand) 24%, transparent); box-shadow: 0 0 32px color-mix(in srgb, var(--color-fafa-brand) 12%, transparent) inset; }
+
+  nav { @apply grid min-w-0 content-start overflow-y-auto px-1 pb-4; }
+  .nav-group { @apply grid gap-1; }
+  .nav-group + .nav-group { @apply mt-5; }
+  .nav-group-label { @apply mb-1 px-3 text-[11px] font-bold tracking-[0.08em] text-fafa-subtle; }
+  nav button {
+    @apply min-h-10 rounded-xl px-3 text-left text-fafa-muted transition-colors duration-150 hover:bg-fafa-surface-muted hover:text-fafa-ink;
+  }
+  nav button b { @apply text-[13px] font-semibold; }
+  nav button.active {
+    @apply bg-fafa-brand-soft text-fafa-brand-strong shadow-none;
+    box-shadow: inset 3px 0 0 var(--color-fafa-brand);
+  }
+  .shortcut-note { @apply mx-2 mt-auto border-t border-fafa-border pt-4 text-xs text-fafa-subtle; }
+  .shortcut-note kbd { @apply rounded-md border border-fafa-border bg-fafa-surface-muted px-1.5 py-0.5 font-mono text-[10px] text-fafa-muted shadow-none; }
+
+  .workspace { @apply col-start-2 min-w-0 bg-fafa-canvas; }
+  .topbar {
+    @apply sticky top-0 z-10 flex min-h-[82px] flex-wrap items-center justify-between gap-4 border-b border-fafa-border bg-fafa-surface/95 px-8 py-4 backdrop-blur-md;
+  }
+  .topbar h1 { @apply text-2xl font-bold tracking-[-0.025em] text-fafa-ink; }
+  .topbar p:last-child { @apply mt-1 text-[13px] text-fafa-muted; }
+  .topbar-actions { @apply gap-3; }
+  .save-state { @apply text-xs font-medium text-fafa-muted; }
+  .save-state i { @apply size-2 bg-fafa-subtle; }
+  .save-state.success i { @apply bg-fafa-success; box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-fafa-success) 14%, transparent); }
+  .save-state.error { @apply text-fafa-danger; }
+  .save-state.error i { @apply bg-fafa-danger; }
+  .theme-toggle {
+    @apply h-10 rounded-xl border border-fafa-border bg-fafa-surface px-3.5 text-[13px] font-semibold text-fafa-ink transition-colors hover:border-fafa-brand hover:bg-fafa-brand-soft;
+  }
+
+  .primary, .secondary, .service-actions button, .mock-actions button {
+    @apply inline-flex min-h-10 items-center justify-center rounded-xl px-4 text-[13px] font-semibold transition duration-150 disabled:cursor-wait disabled:opacity-50;
+  }
+  .primary {
+    @apply border border-fafa-brand bg-fafa-brand text-white shadow-sm hover:border-fafa-brand-strong hover:bg-fafa-brand-strong;
+  }
+  .secondary, .service-actions button, .mock-actions button {
+    @apply border border-fafa-border bg-fafa-surface text-fafa-ink shadow-none hover:border-fafa-brand hover:bg-fafa-brand-soft;
+  }
+  .secondary.danger { @apply border-fafa-danger bg-fafa-surface text-fafa-danger hover:bg-fafa-danger hover:text-white; }
+  .primary.danger-solid { @apply border-fafa-danger bg-fafa-danger hover:bg-fafa-danger; }
+  .utility-button { margin-top: 16px; }
+
+  #settings-form { @apply mx-auto max-w-[1180px] px-6 py-8 pb-20; }
+  section.active { animation: fafa-panel-in 180ms ease-out; }
+  .overview-hero {
+    @apply relative grid min-w-0 overflow-hidden rounded-2xl border border-fafa-border bg-fafa-surface p-6 shadow-fafa-card;
+    grid-template-columns: minmax(0, 1fr) minmax(150px, 220px);
+    min-height: 232px;
+  }
+  .overview-hero-copy { @apply relative z-[1] flex min-w-0 flex-col items-start justify-center; }
+  .overview-eyebrow { @apply text-[11px] font-bold tracking-[0.09em] text-fafa-subtle; }
+  .overview-hero h2 { @apply mt-2 max-w-xl text-[26px] font-bold leading-tight tracking-[-0.03em] text-fafa-ink; }
+  .overview-hero p { @apply mt-3 max-w-xl text-sm leading-6 text-fafa-muted; }
+.overview-actions { @apply mt-5 flex flex-wrap gap-3; }
+  .overview-pet {
+    @apply pointer-events-none h-[206px] max-w-full self-end justify-self-center object-contain object-bottom;
+    filter: drop-shadow(0 14px 18px rgb(37 30 35 / 0.16));
+  }
+  .overview-section-head { @apply mt-8 flex flex-wrap items-end justify-between gap-3; }
+  .overview-section-head h3, .overview-next-step h3 { @apply mt-1 text-lg font-semibold tracking-[-0.015em] text-fafa-ink; }
+  .overview-section-head p { @apply text-[13px] leading-5 text-fafa-muted; }
+  .overview-status-grid { @apply mt-4 grid gap-4; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .overview-status {
+    @apply relative min-w-0 overflow-hidden rounded-2xl border border-fafa-border bg-fafa-surface p-5 shadow-fafa-card;
+  }
+  .overview-status::before { content: ""; @apply absolute inset-x-0 top-0 h-1 bg-fafa-subtle; }
+  .overview-status[data-tone="good"]::before { @apply bg-fafa-success; }
+  .overview-status[data-tone="warn"]::before { @apply bg-fafa-warning; }
+  .overview-status[data-tone="bad"]::before { @apply bg-fafa-danger; }
+  .overview-status small { @apply text-[11px] font-bold tracking-[0.08em] text-fafa-subtle; }
+  .overview-status strong { @apply mt-3 block text-base font-semibold text-fafa-ink; }
+  .overview-status span { @apply mt-1 block text-xs leading-5 text-fafa-muted; }
+  .overview-next-step { @apply mt-6 flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-fafa-border bg-fafa-surface-muted px-5 py-5; }
+  .overview-next-step > div { @apply min-w-0; }
+  .overview-next-step p { @apply mt-2 max-w-2xl text-[13px] leading-6 text-fafa-muted; }
+  .overview-quick-head { @apply mt-8; }
+  .overview-quick-actions { @apply mt-4 grid gap-3; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .overview-quick-actions .secondary { @apply min-h-[88px] flex-col items-start justify-center gap-1 px-4 text-left; }
+  .overview-quick-actions span { @apply text-sm font-semibold text-fafa-ink; }
+  .overview-quick-actions small { @apply text-xs font-normal leading-5 text-fafa-muted; }
+  .section-subline { @apply mb-6 max-w-2xl text-[13px] leading-6 text-fafa-muted; }
+  .section-desc { @apply mb-4 text-[13px] leading-6 text-fafa-muted; }
+  .control-grid, .feature-grid { @apply gap-4; }
+  .control-block, .service-panel, .relationship-card, .console-status, .status {
+    @apply border border-fafa-border bg-fafa-surface shadow-fafa-card;
+  }
+  .control-block { @apply min-h-[132px] rounded-2xl p-5; }
+  .control-block.range-block.compact { @apply min-h-[116px] p-5; }
+  .control-title h3, .service-panel h3, .console-status h3 { @apply mt-1 text-base font-semibold tracking-[-0.01em] text-fafa-ink; }
+  .control-title small, .service-panel header small, .relationship-card small, .console-status small, .status b, .dialog-head small {
+    @apply text-[11px] font-bold tracking-[0.08em] text-fafa-subtle;
+  }
+  .control-title output, .range-output, .meter-caption output, .relationship-card output { @apply font-mono text-xl font-bold text-fafa-brand-strong; }
+  .range-legend { @apply text-xs text-fafa-muted; }
+  input[type=range] { accent-color: var(--color-fafa-brand); }
+  .range-legend-numeric { @apply mt-1; }
+  .voice-range-grid { @apply items-start; }
+  .voice-range-field { @apply gap-2 rounded-xl border border-fafa-border bg-fafa-surface-muted p-4; }
+  .voice-range-field input[type=range] { @apply my-1 min-h-8; }
+  .voice-range-field .range-legend { @apply gap-3 text-[11px]; }
+  .voice-range-field .range-legend span { @apply min-w-0; }
+  .voice-range-field .range-legend span:nth-child(2) { @apply text-center; }
+  .voice-range-field .range-legend span:last-child { @apply text-right; }
+
+  .option-group { @apply mt-7 border-0 bg-transparent p-0 shadow-none; }
+  .option-group-caption { @apply mb-2 rounded-md bg-transparent px-0 py-0 text-[12px] font-semibold tracking-normal text-fafa-ink; }
+  .toggle-stack { @apply m-0 overflow-hidden rounded-2xl border border-fafa-border bg-fafa-surface shadow-fafa-card; }
+  .toggle-row { @apply min-h-[68px] gap-5 border-b border-fafa-border px-5 py-3.5 transition-colors hover:bg-fafa-surface-muted; cursor: default; }
+  .toggle-control { @apply inline-flex shrink-0 cursor-pointer items-center; }
+  .toggle-copy b { @apply text-sm font-semibold text-fafa-ink; }
+  .toggle-copy small { @apply mt-0.5 text-xs leading-5 text-fafa-muted; }
+  .toggle-row i, .compact-switch i, .compact-switch-row i { @apply h-6 w-11 bg-fafa-border; }
+  .toggle-row i::after, .compact-switch i::after, .compact-switch-row i::after { @apply size-[18px] bg-white; }
+  .toggle-row input:checked + i, .compact-switch input:checked + i, .compact-switch-row input:checked + i { @apply bg-fafa-brand; }
+  .toggle-row input:checked + i::after, .compact-switch input:checked + i::after, .compact-switch-row input:checked + i::after { transform: translateX(20px); }
+  .mode-banner {
+    @apply mb-6 rounded-2xl border border-fafa-border bg-fafa-brand-soft p-5 text-fafa-ink shadow-none;
+    background-image: none;
+  }
+  .mode-banner b { @apply text-base font-semibold text-fafa-ink; }
+  .mode-banner small { @apply text-xs text-fafa-muted; }
+  .mode-banner .signal-light-on-dark { @apply border-fafa-border bg-fafa-surface-muted text-fafa-muted; }
+  .mode-banner .signal-light-on-dark[data-tone="good"] { @apply border-fafa-success/30 bg-fafa-success/10 text-fafa-success; }
+  .mode-banner .signal-light-on-dark[data-tone="warn"] { @apply border-fafa-warning/30 bg-fafa-warning/10 text-fafa-warning; }
+  .mode-banner .signal-light-on-dark[data-tone="bad"] { @apply border-fafa-danger/30 bg-fafa-danger/10 text-fafa-danger; }
+
+  .field-grid { @apply gap-4; }
+  .field { @apply gap-1.5; }
+  .field > span { @apply min-h-0 text-[13px] font-semibold leading-5 text-fafa-ink; }
+  .field > small, .row-hint { @apply text-xs leading-5 text-fafa-muted; }
+  .field input, .field select, .row-field input, .row-field select, .input-with-action input, .select-with-action select, .safety-keywords-field textarea, .test-dialog textarea, .guide-field input, .keyword-row input {
+    @apply min-h-10 rounded-xl border border-fafa-border bg-fafa-surface px-3 text-sm text-fafa-ink shadow-none transition placeholder:text-fafa-subtle hover:border-fafa-subtle focus:border-fafa-brand focus:bg-fafa-surface focus:ring-4 focus:ring-fafa-brand/15 focus:outline-none;
+  }
+  .secret-input { @apply relative min-w-0; }
+  .secret-input input { @apply pr-11; }
+  .secret-visibility-toggle {
+    @apply absolute right-1.5 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-lg text-fafa-brand-strong transition-colors hover:bg-fafa-brand-soft focus:outline-none focus:ring-2 focus:ring-fafa-brand/30;
+  }
+  .secret-visibility-toggle svg { @apply size-[17px]; }
+  .field input[type="radio"], .field input[type="checkbox"], .radio-chip input, .idle-check input, .toggle-row input, .compact-switch input, .compact-switch-row input, .avatar-mode-card input {
+    width: auto;
+    min-width: 0;
+    padding: 0;
+  }
+  .avatar-mode-grid { @apply gap-4; }
+  .avatar-mode-card {
+    grid-template-columns: auto auto minmax(0, 1fr);
+    grid-template-areas:
+      "radio icon copy"
+      "radio status status";
+    align-content: start;
+    align-items: start;
+    gap: 12px;
+    min-height: 136px;
+    padding: 18px;
+  }
+  .avatar-mode-card .mode-radio { grid-area: radio; align-self: center; }
+  .avatar-mode-card .avatar-mode-icon { grid-area: icon; margin-top: 1px; }
+  .avatar-mode-card .avatar-mode-copy { grid-area: copy; min-width: 0; }
+  .avatar-mode-card .avatar-mode-copy b { @apply text-sm font-semibold leading-5 text-fafa-ink; }
+  .avatar-mode-card .avatar-mode-copy small { @apply text-xs leading-5 text-fafa-muted; overflow-wrap: anywhere; }
+  .avatar-mode-card .signal-light { grid-area: status; justify-self: start; }
+  .avatar-mode-card-unavailable {
+    @apply cursor-not-allowed border-fafa-ink bg-fafa-ink text-white shadow-none;
+    opacity: .96;
+  }
+  .avatar-mode-card-unavailable:hover {
+    @apply border-fafa-ink bg-fafa-ink shadow-none;
+    transform: none;
+  }
+  .avatar-mode-card-unavailable .avatar-mode-copy b { @apply text-white; }
+  .avatar-mode-card-unavailable .avatar-mode-copy small { @apply text-white/70; }
+  .avatar-mode-card-unavailable .avatar-mode-icon { @apply bg-white/10 text-white/80; }
+  .avatar-mode-card-unavailable .mode-radio { @apply border-white/35 bg-white/5; }
+  .unavailable-badge { @apply mt-1 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2 py-1 text-[11px] font-semibold text-white/80; grid-area: status; justify-self: start; }
+  .option-card { @apply mt-4 rounded-xl border-fafa-border bg-fafa-surface-muted px-4 py-3.5 hover:border-fafa-brand hover:bg-fafa-brand-soft; }
+  .option-card b { @apply text-[13px] font-semibold text-fafa-ink; }
+  .option-card small { @apply text-xs text-fafa-muted; }
+
+  .service-panel { @apply mb-6 rounded-2xl p-5; background-image: none; }
+  .service-panel header { @apply mb-5 border-b border-fafa-border pb-4; }
+  .service-actions { @apply gap-2.5; }
+  .service-actions button { @apply min-h-9 rounded-lg px-3 text-xs; }
+  .service-panel-toggle { @apply bg-fafa-surface; }
+  .service-header-note { @apply mt-1 text-xs font-normal leading-5 text-fafa-muted; }
+  .service-panel-toggle .collapse-content.open { @apply pb-1; }
+  .setup-guide-row { @apply mt-6 border-t border-fafa-border pt-5; }
+  .setup-guide-row .secondary { @apply min-h-10; }
+  .panel-disclosure { @apply min-h-9; }
+  .panel-disclosure-content[hidden] { display: none; }
+  .push-to-talk-control { @apply flex min-h-10 items-center gap-3; }
+  .push-to-talk-key { @apply min-w-20 font-mono font-semibold; }
+  .push-to-talk-key.is-capturing { @apply border-fafa-brand bg-fafa-brand-soft text-fafa-brand-strong; }
+  #push-to-talk-status { @apply text-xs leading-5 text-fafa-muted; }
+  .unavailable-panel > p { @apply text-sm leading-6 text-fafa-muted; }
+  .unavailable-status { @apply inline-flex min-h-8 items-center rounded-full border border-fafa-border bg-fafa-surface-muted px-3 text-xs font-semibold text-fafa-muted; }
+  .inline-note, .testcenter-link-note small { @apply text-xs leading-5 text-fafa-muted; }
+  .quick-enable-strip { @apply rounded-xl border-fafa-warning bg-fafa-surface-muted text-fafa-warning; }
+
+  .command-row, .reminder-row, .timeline-row, .command-catalog-row, .vts-item {
+    @apply rounded-xl border border-fafa-border bg-fafa-surface-muted;
+  }
+  .command-head, .command-head-5, .reminder-head { @apply text-xs text-fafa-muted; }
+  .remove-command, .remove-reminder, .remove-keyword, .dialog-close { @apply rounded-lg text-fafa-danger hover:bg-fafa-danger hover:text-white; }
+  .row-check { @apply text-xs text-fafa-ink; }
+
+  .diagnostics { @apply gap-4; }
+  .status { @apply min-h-[104px] rounded-2xl p-4; }
+  .status::after { background: var(--status-color, var(--color-fafa-brand)); }
+  .status span { @apply mt-3 text-sm font-semibold; }
+  .status[data-tone=good] { --status-color: var(--color-fafa-success); }
+  .status[data-tone=warn] { --status-color: var(--color-fafa-warning); }
+  .status[data-tone=off] { --status-color: var(--color-fafa-subtle); }
+  .status[data-tone=bad] { --status-color: var(--color-fafa-danger); }
+
+  .action-test-grid { @apply gap-3; }
+  .action-test-grid button, .idle-check, .radio-chip {
+    @apply rounded-xl border border-fafa-border bg-fafa-surface text-fafa-ink shadow-none transition hover:border-fafa-brand hover:bg-fafa-brand-soft hover:shadow-none;
+  }
+  .action-test-grid button { @apply min-h-14 px-4; }
+  .action-test-grid button.playing, .radio-chip:has(input:checked) { @apply border-fafa-brand bg-fafa-brand text-white; }
+  .action-test-grid .action-play { @apply bg-fafa-brand-soft; }
+  .action-test-grid .action-play::after { border-left-color: var(--color-fafa-brand); }
+  .idle-check { @apply px-3 py-2.5; }
+  .idle-check i { @apply border-fafa-border bg-fafa-surface; }
+  .idle-check input:checked + i { @apply border-fafa-brand bg-fafa-brand; }
+  .radio-chip { @apply px-3 py-2 text-[13px]; }
+  .custom-action-test { @apply rounded-2xl border-fafa-border bg-fafa-brand-soft shadow-none; }
+
+  .assign-grid, .relationship-grid, .console-grid { @apply gap-4; }
+  .assign-card { @apply rounded-2xl; }
+  .assign-card::before { background: var(--color-fafa-brand); opacity: .78; }
+  .relationship-card, .console-status { @apply rounded-2xl p-5; }
+  .relationship-card b { @apply text-base font-semibold text-fafa-ink; }
+  .relationship-stage-track { grid-column: 1 / -1; }
+  .relationship-stage-track ol { @apply mt-4 grid gap-2; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .relationship-stage-track li { @apply relative grid min-w-0 gap-1 rounded-xl border border-fafa-border bg-fafa-surface-muted px-3 py-3 text-fafa-muted; }
+  .relationship-stage-track li span { @apply text-sm font-semibold; }
+  .relationship-stage-track li small { @apply text-[11px] font-medium tracking-normal; }
+  .relationship-stage-track li.current { @apply border-fafa-brand bg-fafa-brand-soft text-fafa-brand-strong; box-shadow: inset 0 0 0 1px var(--color-fafa-brand); }
+  .relationship-stage-track li.current::after { content: "当前阶段"; @apply absolute right-2 top-2 text-[10px] font-bold text-fafa-brand-strong; }
+  .rel-meter, .meter { @apply bg-fafa-surface-muted; }
+  .rel-meter-fill, .meter-fill { background: var(--color-fafa-brand); }
+  .rel-meter-fill.mood, .meter-fill { background: linear-gradient(90deg, var(--color-fafa-success), var(--color-fafa-brand)); }
+  .timeline-type { @apply rounded-lg bg-fafa-brand-soft px-2 py-1 text-fafa-brand-strong; }
+  .timeline-text { @apply text-sm text-fafa-ink; }
+  .timeline-outcome[data-outcome=processed] { @apply text-fafa-success; }
+  .timeline-outcome[data-outcome=paused] { @apply text-fafa-warning; }
+  .timeline-outcome[data-outcome=rate-limited] { @apply text-fafa-danger; }
+
+  .test-dialog { @apply rounded-2xl border-fafa-border bg-fafa-surface text-fafa-ink shadow-fafa-float; }
+  .test-dialog::backdrop { background: rgb(37 30 35 / .36); backdrop-filter: blur(4px); }
+  .test-dialog[open] { position: fixed; top: 50vh; right: auto; bottom: auto; left: 50vw; margin: 0; transform: translate(-50%, -50%); }
+  .test-dialog.is-dragging { transform: none; }
+  .dialog-form { @apply p-6; }
+  .dialog-head { cursor: move; touch-action: none; }
+  .dialog-head button { cursor: pointer; }
+  .dialog-head h3 { @apply text-lg font-bold text-fafa-ink; }
+  .dialog-hint { @apply text-[13px] leading-6 text-fafa-muted; }
+  .dialog-reply { @apply rounded-xl border-fafa-border bg-fafa-surface-muted text-sm leading-6 text-fafa-ink; }
+  .dialog-reply.error { @apply border-fafa-danger bg-fafa-brand-soft text-fafa-danger; }
+  .guide-step { @apply rounded-xl border-fafa-border bg-fafa-surface-muted; }
+  .guide-step-num { @apply bg-fafa-brand; }
+  .guide-step p { @apply text-[13px] leading-6 text-fafa-muted; }
+  .toast { @apply rounded-xl bg-fafa-ink text-sm shadow-fafa-float; }
+  .toast.success::before { background: var(--color-fafa-success); }
+  .toast.error::before { background: var(--color-fafa-danger); }
+  .toast.warn::before { background: var(--color-fafa-warning); }
+
+  .voice-pipeline { @apply mt-5 grid gap-3 rounded-2xl border border-fafa-border bg-fafa-surface-muted p-4; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .voice-pipeline > div { @apply min-w-0 rounded-xl border border-fafa-border bg-fafa-surface px-3 py-3; }
+  .voice-pipeline small { @apply block text-[11px] font-bold tracking-[0.06em] text-fafa-subtle; }
+  .voice-pipeline output { @apply mt-2 block min-h-10 whitespace-normal break-words text-sm font-medium leading-5 text-fafa-ink; }
+  .voice-pipeline-dialog { @apply mt-4; }
+
+:root[data-theme="dark"] .sidebar, :root[data-theme="dark"] .topbar { background: color-mix(in srgb, var(--color-fafa-surface) 94%, transparent); }
+:root[data-theme="dark"] .pet-preview { background: var(--color-fafa-surface-muted); }
+:root[data-theme="dark"] .toggle-row i::after, :root[data-theme="dark"] .compact-switch i::after, :root[data-theme="dark"] .compact-switch-row i::after { background: var(--color-fafa-surface); }
+
+/* The fixed sidebar leaves roughly 800px of usable canvas in the normal
+   desktop window. Two cards keep each mode description readable there. */
+@container (max-width: 1060px) {
+  .avatar-mode-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@container (max-width: 680px) {
+  .avatar-mode-grid { grid-template-columns: 1fr; }
+  .avatar-mode-card { min-height: 0; }
+}
+
+@media (max-width: 900px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { position: relative; width: 100%; max-width: 100%; min-height: auto; flex-direction: row; align-items: center; gap: 10px; padding: 12px 16px; overflow: visible; border-right: 0; border-bottom: 1px solid var(--color-fafa-border); }
+  .brand { margin: 0; flex: 0 0 auto; }
+  .brand-mark { width: 36px; height: 36px; }
+  .brand b, .pet-preview, .shortcut-note { display: none; }
+  nav { display: flex; min-width: 0; flex: 1; gap: 10px; padding: 0; overflow-x: auto; overflow-y: hidden; }
+  .nav-group { display: flex; flex: 0 0 auto; gap: 4px; }
+  .nav-group + .nav-group { margin-top: 0; }
+  .nav-group-label { display: none; }
+  nav button { min-width: max-content; min-height: 36px; padding: 0 10px; }
+  .workspace { grid-column: 1; }
+  .topbar { min-height: auto; padding: 16px 20px; }
+  #settings-form { padding: 24px 20px 56px; }
+}
+
+@media (max-width: 640px) {
+  .topbar { align-items: flex-start; }
+  .topbar h1 { font-size: 21px; }
+  .topbar-actions { width: 100%; justify-content: space-between; }
+  .save-state { display: flex; }
+  .control-grid, .feature-grid, .field-grid.two, .field-grid.three, .relationship-grid, .console-grid, .assign-grid, .action-test-grid, .idle-action-list, .vts-lists { grid-template-columns: 1fr; }
+  .service-panel, .control-block { padding: 16px; }
+  .overview-hero { grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 20px; }
+  .overview-hero h2 { font-size: 23px; }
+  .overview-pet { display: none; }
+  .overview-status-grid, .overview-quick-actions { grid-template-columns: 1fr; }
+  .overview-next-step { align-items: stretch; }
+  .overview-next-step .secondary { width: 100%; }
+  .service-panel header { align-items: flex-start; gap: 12px; }
+  .service-actions { width: 100%; justify-content: flex-start; }
+  .input-with-action, .select-with-action, .custom-action-test { grid-template-columns: 1fr; }
+  .input-with-action .secondary, .select-with-action .secondary { width: 100%; }
+  .relationship-stage-track ol, .voice-pipeline { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.active { animation: none; }
+}
+
+@keyframes fafa-panel-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

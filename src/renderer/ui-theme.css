@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fafa-canvas: #f8f7f8;
+  --color-fafa-surface: #ffffff;
+  --color-fafa-surface-muted: #f3f0f2;
+  --color-fafa-ink: #251e23;
+  --color-fafa-muted: #645c61;
+  --color-fafa-subtle: #8a7f85;
+  --color-fafa-border: #e7e0e4;
+  --color-fafa-brand: #b23362;
+  --color-fafa-brand-strong: #8f2049;
+  --color-fafa-brand-soft: #fcecf2;
+  --color-fafa-accent: #607a86;
+  --color-fafa-success: #257a5a;
+  --color-fafa-warning: #8a5a10;
+  --color-fafa-danger: #b42346;
+  --color-fafa-info: #366b9b;
+  --font-sans: "Segoe UI Variable", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  --shadow-fafa-card: 0 1px 2px rgb(37 30 35 / 0.04), 0 10px 26px rgb(37 30 35 / 0.045);
+  --shadow-fafa-float: 0 18px 50px rgb(37 30 35 / 0.16);
+  --radius-fafa-card: 1rem;
+}
+
+:root {
+  color-scheme: light;
+  --fafa-focus: color-mix(in srgb, var(--color-fafa-brand) 24%, transparent);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-fafa-canvas: #1f1a1d;
+  --color-fafa-surface: #282125;
+  --color-fafa-surface-muted: #342a30;
+  --color-fafa-ink: #f7f2f4;
+  --color-fafa-muted: #c9bec3;
+  --color-fafa-subtle: #a99da4;
+  --color-fafa-border: #493d43;
+  --color-fafa-brand: #e26891;
+  --color-fafa-brand-strong: #f495b5;
+  --color-fafa-brand-soft: #482734;
+  --color-fafa-accent: #9bb7c1;
+  --color-fafa-success: #69c99c;
+  --color-fafa-warning: #e5b664;
+  --color-fafa-danger: #f17a97;
+  --color-fafa-info: #83b7e5;
+}
+
+@layer base {
+  *, ::before, ::after { box-sizing: border-box; }
+  body { font-family: var(--font-sans); }
+  button, input, select, textarea { font: inherit; }
+  button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--color-fafa-brand);
+    outline-offset: 2px;
+  }
+}
