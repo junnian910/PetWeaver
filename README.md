@@ -365,11 +365,13 @@ Please keep character-specific behavior in pet packages whenever possible. Chang
 
 ## Historical releases
 
-The `archive-v0.1`, `archive-v0.2`, and `archive-v0.3` releases preserve
-verified installers from the original role-specific Fafa Desktop Pet. They are
-historical binary snapshots, not current PetWeaver builds. Each release records
-artifact checksums, verification limits, and the fact that the installers are
-not code-signed.
+The [`archive-v0.1`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.1),
+[`archive-v0.2`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.2),
+and [`archive-v0.3`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.3)
+releases preserve verified installers from the original role-specific Fafa
+Desktop Pet. They are historical binary snapshots, not current PetWeaver
+builds. Each release records artifact checksums, verification limits, and the
+fact that the installers are not code-signed.
 
 ## License
 

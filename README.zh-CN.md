@@ -120,7 +120,7 @@ pnpm build:web
 
 ## 历史版本
 
-`archive-v0.1`、`archive-v0.2`、`archive-v0.3` 保存原版发发桌宠中通过基础核对的安装包。它们属于历史二进制快照，不是当前 PetWeaver 构建。每个 Release 都会列出文件校验值、验证边界，并明确提示安装包尚未进行代码签名。
+[`archive-v0.1`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.1)、[`archive-v0.2`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.2)、[`archive-v0.3`](https://github.com/junnian910/PetWeaver/releases/tag/archive-v0.3) 保存原版发发桌宠中通过基础核对的安装包。它们属于历史二进制快照，不是当前 PetWeaver 构建。每个 Release 都会列出文件校验值、验证边界，并明确提示安装包尚未进行代码签名。
 
 ## 许可证
 
